@@ -41,6 +41,10 @@ In order to acheuve the desired user & business goals the following features wil
 ## Structure
 This website has been designed with simplicity in mind, each page only have entirely relevant information on it so that the user is able to find what they want quickly without having to read through unnessecary things. I have seperated out each key feature to really highlight their functionality to the user.
 
+Database scheme for the menus
+
+![here](assets/documents/images/menu-scheme.png)
+
 ## Skeleton
 [Wireframes can be viewed here](assets/documents/wireframes/WIREFRAMES.md)
 
