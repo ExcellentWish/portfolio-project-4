@@ -24,6 +24,7 @@ I have used several technologies that have enabled this design to work:
     - Used to store code for the project after being pushed.
 - [Git](https://git-scm.com/)
 - [Canva](https://www.canva.com/)
+- [Cloudinary](https://cloudinary.com/)
 
 ## Testing
 

@@ -1,0 +1,1 @@
+web: gunicorn bottega_pia.wsgi
