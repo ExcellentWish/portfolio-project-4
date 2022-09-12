@@ -15,10 +15,12 @@ This is a full-stack frameworks project built using Django, Python, HTML, CSS an
   - [Testing](#testing)
   - [Deployment](#deployment)
     - [Creating an Application with Heroku](#creating-an-application-with-heroku)
+      - [Heroku](#heroku)
+      - [Heroku Deployment](#heroku-deployment)
   - [Credits](#credits)
 
 ## User Experience
-These user will be looking for:
+The user will be looking for:
 - Informative website, with information that is easy-to-find & concise
 - Current, up-to-date menus
 - A booking form to make reservation enquiries with the restaurant
@@ -86,6 +88,36 @@ To deploy my django application, I used [Code Institute Full Template](https://g
 - Add a repository name and brief description. 
 
 ### Creating an Application with Heroku
-I followed the below steps using the Code Institute tutorial and ![Django Blog cheatsheat](https://docs.google.com/document/d/1P5CWvS5cYalkQOLeQiijpSViDPogtKM7ZGyqK-yehhQ/edit)
+I followed the below steps using the Code Institute tutorial and [Django Blog cheatsheat](https://docs.google.com/document/d/1P5CWvS5cYalkQOLeQiijpSViDPogtKM7ZGyqK-yehhQ/edit)
+The following command in the Gitpod CLI will create the relevant files needed for Heroku to install your project dependencies `pip3 freeze --local > requirements.txt`. 
+
+1. Go to Heroku.com and log in; if you do not already have an account then you will need to create one.
+2. Click the New dropdown and select Create New App.
+3. Enter a name for your new project, all Heroku apps need to have a unique name, you will be prompted if you need to change it.
+4. Select the region you are working in.
+  
+#### Heroku 
+- In the resources tab you must install 'Heroku Postgres' in the add-ons section
+- You can set it to hobby for free use.
+
+You will need to set your Environment Variables - this is a key step to ensuring your application is deployed properly.
+- In the Settings tab, click on `Reveal Config Vars` and set the following variables:
+    - Add key: `PORT` & value `8000`
+    - SECRET_KEY - to be set to your chosen key
+    - CLOUDINARY_URL - to be set to your cloudinary API environment varible
+    - DATABASE_URL - For Postgres database, which should be filled in when `Heroku Postgres` is selected from add-ons
+    - DISABLE_COLLECTSTATIC, 1 - Untill its ready for release
+ 
+#### Heroku Deployment
+
+In the Deploy tab:
+1. Connect your Heroku account to your Github Repository following these steps:
+2. Click on the `Deploy` tab and choose `Github-Connect to Github`.
+3. Enter the GitHub repository name and click on `Search`.
+4. Choose the correct repository for your application and click on `Connect`.
+5. You can then choose to deploy the project manually or automatically, automatic deployment will generate a new application every time you push a change to Github, whereas manual deployment requires you to push the `Deploy Branch` button whenever you want a change made.
+6. Once you have chosen your deployment method and have clicked `Deploy Branch` your application will be built and you should see the below `View` button, click this to open your application:
+
+
 
 ## Credits
