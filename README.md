@@ -11,7 +11,6 @@ This is a full-stack frameworks project built using Django, Python, HTML, CSS an
   - [Structure](#structure)
   - [Skeleton](#skeleton)
   - [Surface](#surface)
-- [tbd](#tbd)
   - [Technology Used](#technology-used)
   - [Testing](#testing)
   - [Deployment](#deployment)
@@ -51,9 +50,10 @@ Database scheme for the menus
 The theme of simplicity follows through to the design, I've used bootstrap columns and rows to divide the pages and tried to keep the same layout throughout so that the user has a sense of ease when on the various pages. 
 
 ## Surface
-The colour pallete I have chosen for this website are 
-I chose the font
-# tbd
+The colour pallete I have chosen for this website are # tbd
+
+I chose the fonts Exo and Roboto I wanted a bold/statement font to use for headings which is why I chose 'Exo' and then 'Roboto' for the general content as it's easier to read for the user.
+
 
 
 
@@ -73,6 +73,9 @@ I have used several technologies that have enabled this design to work:
 - [Cloudinary](https://cloudinary.com/)
 - [Balsamiq](https://balsamiq.com/)
   - For wireframes and flow charts
+- [Pep8](http://pep8online.com/)
+  - Used to test my code for any issues or errors.
+- [Heroku](https://www.heroku.com/)
 
 ## Testing
 Testing Document is found [here](https://docs.google.com/spreadsheets/d/15nLGvvOe-gkxcLGmvUc7a_84_5jA6UGyUBGgMEQ42Fg/edit#gid=0)
