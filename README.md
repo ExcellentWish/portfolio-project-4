@@ -1,5 +1,5 @@
 # Bottega Pia
-This is a full-stack frameworks project built using Django, Python, HTML, CSS and JavaScript. This is a restaurant website designed to display menus to customers & allow them to make reservations. This project has been built for educational purpose.
+This is a full-stack frameworks project built using Django, Python, HTML, CSS and JavaScript. This is a restaurant website designed to display menus to customers & allow them to make reservations. It is an Italian resturant that serves great food. This project has been built for educational purpose.
 
 [Live application can be found here](https://bottegapia.herokuapp.com/)
 
@@ -52,7 +52,9 @@ Database scheme for the menus
 The theme of simplicity follows through to the design, I've used bootstrap columns and rows to divide the pages and tried to keep the same layout throughout so that the user has a sense of ease when on the various pages. 
 
 ## Surface
-The colour pallete I have chosen for this website are # tbd
+The colour pallete I have chosen for this website are from [coolers.co](https://coolors.co/5d737e-fdf7f7-64b6ac-e85d75-c76d7e). I like it because it has the Italian flag colours in it. I wanted a 'clean' feel and based it on greens to keep in theme with Italy. Italy will have a huge role in the design of the restaurant and the menu so I wanted there to be consistency.
+
+![](assets/documents/images/bottega-theme.png)
 
 I chose the fonts Exo and Roboto I wanted a bold/statement font to use for headings which is why I chose 'Exo' and then 'Roboto' for the general content as it's easier to read for the user.
 
@@ -66,18 +68,26 @@ I have used several technologies that have enabled this design to work:
 - [Python](https://www.python.org/)
     - Python is the core programming language used to write all of the code in this application to make it fully functional.
 - [Bootstrap](https://getbootstrap.com/docs/5.2/getting-started/introduction/)
+    - For help with HTML and CSS layout 
 
 - [GitHub](https://github.com/)
     - Used to store code for the project after being pushed.
 - [Git](https://git-scm.com/)
 - Google [sheets](https://www.google.com/sheets/about/)
 - [Canva](https://www.canva.com/)
+    - For image editing for readme wireframes.
 - [Cloudinary](https://cloudinary.com/)
+    - For media storage
 - [Balsamiq](https://balsamiq.com/)
   - For wireframes and flow charts
 - [Pep8](http://pep8online.com/)
   - Used to test my code for any issues or errors.
 - [Heroku](https://www.heroku.com/)
+    - For Deployment of this website
+- [Color Contrast Accessibility Validator](https://color.a11y.com/)
+    - To help test colours I will use
+- [Coolers] (https://coolors.co)
+    - To help find colours to use
 
 ## Testing
 Testing Document is found [here](https://docs.google.com/spreadsheets/d/15nLGvvOe-gkxcLGmvUc7a_84_5jA6UGyUBGgMEQ42Fg/edit#gid=0)
