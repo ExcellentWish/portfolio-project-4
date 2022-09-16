@@ -10,3 +10,6 @@ def menus(request):
 
 def food_menu(request):
     return render(request, 'food_menu.html')  
+
+def drinks_menu(request):
+    return render(request, 'drinks_menu.html')  
