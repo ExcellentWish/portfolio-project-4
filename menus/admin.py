@@ -10,7 +10,7 @@ class FoodAdmin(admin.ModelAdmin):
 
 
 @admin.register(DrinkItems)
-class FoodAdmin(admin.ModelAdmin):
+class DrinksAdmin(admin.ModelAdmin):
 
     list_filter = ('on_menu', 'updated_on')
     list_display = ('drink_name', 'price','drinks_menu_section', 'on_menu')
