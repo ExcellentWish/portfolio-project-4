@@ -1,5 +1,43 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% block content %}
+
+<div class="container-fluid text-center">
+    <div class="row content">
+        
+        <div class="col-12">
+            <h1>Welcome</h1>
+            <p>Welcome to Bottega Pia, restaurant, wine shop and bistro. The restaurant is welcoming and cared for down
+                to the smallest detail, designed for those who want to "Eat and feel good". The cuisine proposed by our
+                chefs is a traditional cuisine that uses local products and raw materials from the national territory.
+                <br>
+                This is the place where food meets passion, creating a perfect combination that will enchant all your
+                senses. The friendly staff and the warm and private atmosphere will make you feel at home.</p>
+            <hr>
+            <div class="row content">
+                <div class="col-6 text-center">
+                    <div>
+                        <img src="{% static '/images/pp4food.jpg' %}" class="img-thumbnail" alt="Garlic and battered meatballs">
+                        <a href="#" class="page-link">
+                            <h3>Menus</h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-6 text-center">
+                    <div>
+                        <img src="{% static '/images/PP4-table.jpg' %}" class="img-thumbnail" alt="Table of good with glasses of water and wine">
+                        <a href="#" class="page-link">
+                            <h3>Reservations</h3>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
 
 {% endblock %}
