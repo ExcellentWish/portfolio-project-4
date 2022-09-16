@@ -1,5 +1,8 @@
 from django.db import models
 
+FOOD_MENU_SECTION = ((0, "Lunch"), (1, "Dinner"))
+DRINKS_MENU_SECTION = ((0, "Wine")), ((1, "Water/Soft Drinks")), ((2, "Apéritif"))
+
 # Create your models here.
 class FoodItems(models.Model):
     dish_id = models.AutoField(primary_key=True)
@@ -7,6 +10,7 @@ class FoodItems(models.Model):
     description = models.CharField(max_length=200, unique=True)
     price = models.IntegerField()
     dietary = models.CharField(max_length=200)
+    food_menu_section = models.IntegerField(choices=FOOD_MENU_SECTION, default=1)
     allergens = models.CharField(max_length=200)
     on_menu = models.BooleanField(default=False)
     updated_on = models.DateTimeField(auto_now=True)
@@ -23,7 +27,8 @@ class DrinkItems(models.Model):
     drink_name = models.CharField(max_length=200, unique=True)
     description = models.CharField(max_length=200, unique=True)
     price = models.IntegerField()
-    allergens = models.CharField(max_length=200)
+    allergens = models.CharField(max_length=200, null=True)
+    drinks_menu_section = models.IntegerField(choices=DRINKS_MENU_SECTION, default=0)
     on_menu = models.BooleanField(default=False)
     updated_on = models.DateTimeField(auto_now=True)
 
@@ -32,4 +37,3 @@ class DrinkItems(models.Model):
 
     def __str__(self):
         return self.drink_name
-        
