@@ -9,9 +9,17 @@ from .forms import CustomerForm, ReservationForm
 class ReservationsEnquiry(View):
 
     def get(self, request, *args, **kwargs):
+        template_name = "reservations.html"
+        
+        return render(
+            request, 'reservations.html', 
+            {'customer_form': CustomerForm(), 'reservation_form': ReservationForm()},
+            )
+
+
+    def post(self, request, *args, **kwargs):
         customer_form = CustomerForm(data=request.POST)
         reservation_form = ReservationForm(request.POST)
-        template_name = "reservations.html"
 
         return render(
             request, 'reservations.html', 

@@ -13,3 +13,6 @@ def food_menu(request):
 
 def drinks_menu(request):
     return render(request, 'drinks_menu.html')  
+
+def reservations(request):
+    return render(request, 'reservations.html')     
