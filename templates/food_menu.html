@@ -16,13 +16,13 @@
         <div class="col-sm-4">
 
             <h3 class="mb-4 text-center"> Lunch Menu</h3>
-            {% if food_items.breakfast_items %}
-            {% for fooditem in food_items.breakfast_items %}
+            {% if food_items.lunch_items %}
+            {% for fooditem in food_items.lunch_items %}
 
             <h5> {{ fooditem.dish_name }} </h5>
             <em>
                 <p> {{ fooditem.description }}
-            </em> | <strong>£{{ fooditem.price}}</strong></p>
+            </em> | <strong>€{{ fooditem.price}}</strong></p>
             <p> {{ fooditem.dietary }} | Allergens: {{ fooditem.allergens }}</p>
 
             {% endfor %}
@@ -39,7 +39,7 @@
             <h5> {{ fooditem.dish_name }} </h5>
             <em>
                 <p> {{ fooditem.description }}
-            </em> | <strong>£{{ fooditem.price}}</strong></p>
+            </em> | <strong>€{{ fooditem.price}}</strong></p>
             <p> {{ fooditem.dietary }} | Allergens: {{ fooditem.allergens }}</p>
             {% endfor %}
             {% endif %}

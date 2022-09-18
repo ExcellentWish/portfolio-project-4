@@ -4,5 +4,37 @@
 
 {% block content %}
 
+<div class="container-fluid text-center">
+    <div class="row content mt-1 d-flex justify-content-center">
+        <!-- Menus content -->
+        <div class="col-sm-8">
+            <h1>Menus at <span class="brand-text">Bottega Pia</span></h1>
+            <br>
+            <p> We are open daily for Lunch & dinner.</p>
+
+            <p>Our menu's change frequently to incorporate produce currently in season.</p>
+
+            <p>We also serve daily specials, come vist to find out more!</p>
+        </div>
+    </div>
+    <hr>
+    <!-- Food & Drinks menus images and page links -->
+    <div class="row content mb-5 d-flex justify-content-center">
+        <div class="col-sm-6 col-lg-4 col-xl-3 text-center">
+            <a href="{% url 'food_menu/' %}">
+                <img src="{% static 'images/pp4dessert.jpg' %}" class="img-thumbnail"
+                    alt="Picture of the dish taste of heaven.">
+                <h3 class="mt-2 brand-text page-links">Food</h3>
+            </a>
+        </div>
+        <div class="col-sm-6 col-lg-4 col-xl-3 text-center">
+            <a href="{% url 'drinks_menu/' %}">
+                <img src="{% static 'images/pp4drinks.jpg' %}" class="img-thumbnail" alt="Photo of wine bottles">
+                <h3 class="mt-2 brand-text page-links">Drinks</h3>
+            </a>
+        </div>
+
+    </div>
+</div>
 
 {% endblock %}
