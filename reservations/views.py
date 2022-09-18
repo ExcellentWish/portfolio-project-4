@@ -5,6 +5,7 @@ from django.contrib import messages
 from .models import Tables, Customer, Reservations
 from .forms import CustomerForm, ReservationForm
 
+
 # Create your views here.
 class ReservationsEnquiry(View):
 
