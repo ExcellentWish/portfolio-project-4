@@ -1,6 +1,7 @@
+from bootstrap_datepicker_plus.widgets import DateTimePickerInput
 from .models import Customer, Reservations
 from django import forms
-from bootstrap_datepicker_plus.widgets import DateTimePickerInput
+
 
 class CustomerForm(forms.ModelForm):
     class Meta:
@@ -14,3 +15,7 @@ class ReservationForm(forms.ModelForm):
         widgets = {
             'requested_time':DateTimePickerInput()
         }
+        def get_form(self):
+            form = super().get_form()
+            form.fields['requested_time'].widget = DateTimePickerInput()
+            return form
