@@ -2,8 +2,9 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from django.contrib import messages
-from .models import Tables, Customer, Reservations
+from .models import Table, Customer, Reservation
 from .forms import CustomerForm, ReservationForm
+from django.template.context_processors import csrf
 import datetime
 from bootstrap_datepicker_plus.widgets import DateTimePickerInput
 

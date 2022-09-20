@@ -4,7 +4,7 @@ FOOD_MENU_SECTION = ((0, "Lunch"), (1, "Dinner"))
 DRINKS_MENU_SECTION = ((0, "Wine")), ((1, "Water/Soft Drinks")), ((2, "Apéritif"))
 
 # Create your models here.
-class FoodItems(models.Model):
+class FoodItem(models.Model):
     dish_id = models.AutoField(primary_key=True)
     dish_name = models.CharField(max_length=200, unique=True)
     description = models.CharField(max_length=200, unique=True)
@@ -22,7 +22,7 @@ class FoodItems(models.Model):
         return self.dish_name
 
 
-class DrinkItems(models.Model):
+class DrinkItem(models.Model):
     drink_id = models.AutoField(primary_key=True)
     drink_name = models.CharField(max_length=200, unique=True)
     description = models.CharField(max_length=200, unique=True)
