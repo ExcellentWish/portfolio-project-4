@@ -33,7 +33,7 @@ class Reservation(models.Model):
     table_id = models.ForeignKey(Table, on_delete=models.CASCADE, related_name="table_booked", null=True)
     status_choices = ((0, "pending"), (1, "confirmed"))
     status = models.CharField(
-        max_length=10, choices=status_choices, default=0)
+        max_length=10, choices=status_choices, default="pending")
 
     def __str__(self):
         return self.reservation_id

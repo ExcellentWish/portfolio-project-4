@@ -35,7 +35,8 @@ class ReservationsEnquiry(View):
                 return render(
                     request, 'reservations.html', 
                     {'customer_form': customer_form, 'reservation_form': reservation_form}
-                    )     
+                    ) 
+                        
         return render(
             request, 'reservations.html', 
             {'customer_form': customer_form, 'reservation_form': reservation_form}
