@@ -18,6 +18,7 @@ This is a full-stack frameworks project built using Django, Python, HTML, CSS an
       - [Heroku](#heroku)
       - [Heroku Deployment](#heroku-deployment)
   - [Credits](#credits)
+  - [Acknowledgement](#acknowledgement)
 
 ## User Experience
 The user will be looking for:
@@ -133,3 +134,5 @@ In the Deploy tab:
 ## Credits
 
 https://startbootstrap.com/theme/agency helped with header
+
+## Acknowledgement

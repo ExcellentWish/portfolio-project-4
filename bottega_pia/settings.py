@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "bootstrap_datepicker_plus",
     'phonenumber_field',
     'website',
+    'crispy_forms',
     'menus',
     'reservations',
     

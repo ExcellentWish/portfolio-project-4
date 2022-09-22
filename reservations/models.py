@@ -2,6 +2,8 @@ from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 import datetime
 
+status_choices = (("pending", "pending"), ("confirmed", "confirmed"))
+
 # Create your models here.
 class Customer(models.Model):
     customer_id = models.AutoField(primary_key=True)
@@ -15,11 +17,11 @@ class Customer(models.Model):
 
 class Table(models.Model):
     table_id = models.AutoField(primary_key=True)
-    min_no_people = models.IntegerField()
+    table_name = models.CharField(max_length=10, default="New table", unique=True)
     max_no_people = models.IntegerField()
 
     def __str__(self):
-        return self.table_id
+        return self.table_name
 
 
 class Reservation(models.Model):
@@ -29,7 +31,7 @@ class Reservation(models.Model):
     no_of_guests = models.IntegerField(choices=guests_choices, default=1)
     requested_time = models.DateTimeField()
     table_id = models.ForeignKey(Table, on_delete=models.CASCADE, related_name="table_booked", null=True)
-    status_choices = ((0, "pending"), (0, "confirmed"))
+    status_choices = ((0, "pending"), (1, "confirmed"))
     status = models.CharField(
         max_length=10, choices=status_choices, default=0)
 
