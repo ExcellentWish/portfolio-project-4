@@ -7,6 +7,7 @@ from .forms import CustomerForm, ReservationForm
 from django.template.context_processors import csrf
 import datetime
 from bootstrap_datepicker_plus.widgets import DateTimePickerInput
+from django.contrib.auth.models import User
 
 
 # Create your views here.

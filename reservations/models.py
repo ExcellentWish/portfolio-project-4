@@ -36,4 +36,4 @@ class Reservation(models.Model):
         max_length=10, choices=status_choices, default="pending")
 
     def __str__(self):
-        return self.reservation_id
+        return str(self.reservation_id)
