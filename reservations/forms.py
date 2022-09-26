@@ -1,4 +1,4 @@
-from bootstrap_datepicker_plus.widgets import DateTimePickerInput
+from bootstrap_datepicker_plus.widgets import DateTimePickerInput,  DatePickerInput, TimePickerInput
 from .models import Customer, Reservation
 from django import forms
 
@@ -11,11 +11,16 @@ class CustomerForm(forms.ModelForm):
 class ReservationForm(forms.ModelForm):
     class Meta:
         model = Reservation
-        fields = ('no_of_guests', 'requested_time')
+        fields = ('no_of_guests','requested_date', 'requested_time')
         widgets = {
-            'requested_time':DateTimePickerInput()
-        }
-        def get_form(self):
-            form = super().get_form()
-            form.fields['requested_time'].widget = DateTimePickerInput()
-            return form
+            'requested_date':DatePickerInput(options={
+                    "format": "DD/MM/YYYY", # moment date-time format
+                    "showClose": True,
+                    "showClear": True,
+                    "showTodayButton": True,
+                }),
+            'requested_time':TimePickerInput(options={
+                    "showClose": True,
+            }
+            ),
+        }    
