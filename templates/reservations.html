@@ -20,10 +20,19 @@
         <div class="col-sm-6">
             <!--action="{% url 'reservations' %}" -->
             <form method="POST">
-                {% csrf_token %}
+                
                 <ul id="full-form">
+                    {% csrf_token %}
+
+                    {{ customer_form.errors }}
+
+                    {{ customer_form.non_field_errors }}
+
+                    {{ reservation_form.errors }}
+
+                    {{ reservation_form.non_field_errors }}
                     
-                    {% if user.is_authenticated %}
+                    <!-- {% if user.is_authenticated %}
                     <div id="authenticated-list">
                         <li>
                             <label for="id_full_name">Full name:</label>
@@ -40,13 +49,11 @@
                                 value="{{ user.phone_number }}" />
                         </li>
                     </div>
-                    {% else %}
+                    {% else %} 
 
-                    {{ customer_form.as_ul }}
+                    {% endif %}-->
 
-                    {% endif %}
-
-                    {{ reservation_form.as_ul }}
+                    
 
                     <button type="submit" class="button btn-outline-success mt-4 text-center submit-button">Send
                         enquiry</button>
