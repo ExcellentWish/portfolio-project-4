@@ -19,25 +19,32 @@
         <div class="col-sm-3"></div>
         <div class="col-sm-6">
             <!--action="{% url 'reservations' %}" -->
-            <form  method="POST">
+            <form method="POST">
                 <ul id="full-form">
                     {% csrf_token %}
                     {% if user.is_authenticated %}
-                    <li>
-                        <label for="id_full_name">Full name:</label>
-                        <input type="full_name" name="full_name" id="id_full_name" value="{{ user.name }}" />
-                    </li>
-                    <li>
-                        <label for="id_email">Email address:</label>
-                        <input type="email" name="email" id="id_email" value="{{ user.email }}" />
-                    </li>
-                    <li>
-                        <label for="id_phone_number">Phone number:</label>
-                        <input type="tel" name="phone_number" id="id_phone_number "value="{{ user.phone_number }}"/>
-                    </li>
+                    <div id="authenticated-list">
+                        <li>
+                            <label for="id_full_name">Full name:</label>
+                            <input type="full_name" name="full_name" id="id_full_name" value="{{ user.name }}" />
+                        </li>
+                        <li>
+                            <label for="id_email">Email address:</label>
+                            <input type="email" name="email" id="id_email " value="{{ user.email }}" />
+                        </li>
+
+                        <li>
+                            <label for="id_phone_number">Phone number:</label>
+                            <input type="tel" name="phone_number" id="id_phone_number "
+                                value="{{ user.phone_number }}" />
+                        </li>
+                    </div>
                     {% else %}
+
                     {{ customer_form.as_ul }}
+
                     {% endif %}
+                    
                     {{ reservation_form.as_ul }}
 
                     <button type="submit" class="button btn-outline-success mt-4 text-center submit-button">Send

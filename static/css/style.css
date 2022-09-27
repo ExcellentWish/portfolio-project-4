@@ -81,3 +81,7 @@ footer{
     background-color: #e8575d;
     font-family: 'Roboto', sans-serif;
 }
+#social-media-icons {
+    width: 40px;
+    height: 40px;
+}
