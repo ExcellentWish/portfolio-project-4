@@ -20,8 +20,9 @@
         <div class="col-sm-6">
             <!--action="{% url 'reservations' %}" -->
             <form method="POST">
+                {% csrf_token %}
                 <ul id="full-form">
-                    {% csrf_token %}
+                    
                     {% if user.is_authenticated %}
                     <div id="authenticated-list">
                         <li>
@@ -44,7 +45,7 @@
                     {{ customer_form.as_ul }}
 
                     {% endif %}
-                    
+
                     {{ reservation_form.as_ul }}
 
                     <button type="submit" class="button btn-outline-success mt-4 text-center submit-button">Send
