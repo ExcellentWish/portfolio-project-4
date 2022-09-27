@@ -1,15 +1,33 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 import datetime
+from django.contrib.auth.models import User
 
 status_choices = (("pending", "pending"), ("confirmed", "confirmed"))
+time_choices = (
+    ("07:00", "07:00"),
+    ("08:00", "08:00"),
+    ("09:00", "09:00"),
+    ("10:00", "10:00"),
+    ("11:00", "11:00"), 
+    ("12:00", "12:00"),
+    ("13:00", "13:00"),
+    ("14:00", "14:00"),
+    ("15:00", "15:00"),
+    ("16:00", "16:00"),
+    ("17:00", "17:00"),
+    ("18:00", "18:00"),
+    ("19:00", "19:00"),
+    ("20:00", "20:00"),
+    ("21:00", "21:00"),
+    )
 
 # Create your models here.
 class Customer(models.Model):
     customer_id = models.AutoField(primary_key=True)
     full_name = models.CharField(max_length=50)
-    email = models.EmailField()
-    phone_number = PhoneNumberField()
+    email = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+    phone_number = PhoneNumberField(null=True)
 
     def __str__(self):
         return self.full_name
