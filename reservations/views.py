@@ -70,17 +70,15 @@ class ReservationsEnquiry(View):
                     reservation_form.save()    
             
                     messages.add_message(
-                                request, messages.SUCCESS, f"Your enquiry for {customer_requested_time} on {customer_requested_date} has been sent - please note this is not approved until you receive a confirmaton email.")
+
+                        request, messages.SUCCESS, f"Your enquiry for {customer_requested_time} on {customer_requested_date} has been sent - please note this is not approved until you receive a confirmaton email."
+                        )
 
                     return render(request, 'reservations.html')
             else:
                 messages.add_message(request, messages.ERROR, "Something is not right with your form")
 
-                return render(
-                    request, 'reservations.html', 
-                    {'customer_form': customer_form, 'reservation_form': reservation_form}
-                )
             return render(
-                    request, 'reservations.html',
-                    {'customer_form': customer_form, 'reservation_form': reservation_form}
-                )      
+                request, 'reservations.html', 
+                {'customer_form': customer_form, 'reservation_form': reservation_form}
+            )
