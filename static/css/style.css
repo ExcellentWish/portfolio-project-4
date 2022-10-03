@@ -26,7 +26,7 @@ body {
 
 
 .bg-image-full{
-    background: url("../images/pp4-header.jpg")no-repeat;
+    background: url("https://res.cloudinary.com/dqw7grg7l/image/upload/v1664441120/pp4header_ihotes.jpg")no-repeat;
     padding-top: 10.5rem;
     padding-bottom: 6rem;
     text-align: center;
