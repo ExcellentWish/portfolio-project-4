@@ -7,6 +7,10 @@ body {
     font-family: 'Exo', sans-serif;
 }
 
+.hidden {
+    display: none;
+}
+
 #main-nav {
     background-color: #64b4ac;
     color: #Effbed;
