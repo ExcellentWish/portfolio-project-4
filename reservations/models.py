@@ -26,12 +26,14 @@ time_choices = (
 class Customer(models.Model):
     customer_id = models.AutoField(primary_key=True)
     full_name = models.CharField(max_length=50)
-    email = models.EmailField(max_length=254, unique=True, default="")
+    email = models.EmailField(max_length=254, default="")
     phone_number = PhoneNumberField(null=True)
 
+    # return the full name as this is easier for the admin to read
     def __str__(self):
         return self.full_name
-
+    # def __str__(self):
+    #     return str(self.customer_id)
 
 class Table(models.Model):
     table_id = models.AutoField(primary_key=True)
@@ -44,7 +46,7 @@ class Table(models.Model):
 
 class Reservation(models.Model):
     reservation_id = models.AutoField(primary_key=True)
-    customer_id = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name="customer")
+    customer_name  = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name="customer", null=True)
     guests_choices = ((1, "1 person"), (2, "2 people"), (3, "3 people"), (4, "4 people"))
     no_of_guests = models.IntegerField(choices=guests_choices, default=1)
     requested_time = models.DateTimeField()
