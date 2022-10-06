@@ -11,6 +11,12 @@ This is a full-stack frameworks project built using Django, Python, HTML, CSS an
   - [Structure](#structure)
   - [Skeleton](#skeleton)
   - [Surface](#surface)
+  - [Features](#features)
+    - [Current Features](#current-features)
+      - [Home page](#home-page)
+      - [Menus - Food \& Drinks](#menus---food--drinks)
+      - [Reservations](#reservations)
+      - [Contact Form](#contact-form)
   - [Technology Used](#technology-used)
   - [Testing](#testing)
   - [Deployment](#deployment)
@@ -59,6 +65,24 @@ The colour pallete I have chosen for this website are from [coolers.co](https://
 
 I chose the fonts Exo and Roboto I wanted a bold/statement font to use for headings which is why I chose 'Exo' and then 'Roboto' for the general content as it's easier to read for the user.
 
+## Features
+
+### Current Features
+
+#### Home page
+- **Navigation bar**: The navigation bar has links to all the active pages for the user and are clearly labelled, the menus option has a dropdown link to take the user to the food or drink menu. If the user is logged in then 'Logout' will appear otehrwsie the user will be given the option to 'Register' or 'Login'/ 
+- **Menus image with link**: This image is clickable and will take the user to the menus page.
+- **Reservations image with link**: This image is clickable and will take the user to the reservations page.
+- **Footer**: The footer displays some of the restaurants key information and has links to social accounts. 
+
+#### Menus - Food & Drinks
+- **Seperate menus**: Each page displays all sections of the menus seperately, each menu item has the Dish/Drink name, dish/drink description, price, dietary information & any allergens. 
+
+#### Reservations
+- **Reservation form**: This page consists of the customer & reservation model forms, they are displayed together to appear as one. If the user is logged in then their name & email address are pre-populated.
+
+#### Contact Form
+- **Contact form**:
 
 
 
