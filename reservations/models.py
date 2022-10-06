@@ -24,6 +24,9 @@ time_choices = (
 
 # Create your models here.
 class Customer(models.Model):
+    """
+    Customer information model
+    """
     customer_id = models.AutoField(primary_key=True)
     full_name = models.CharField(max_length=50)
     email = models.EmailField(max_length=254, default="")
@@ -36,6 +39,9 @@ class Customer(models.Model):
     #     return str(self.customer_id)
 
 class Table(models.Model):
+    """
+    Restaurant table model
+    """
     table_id = models.AutoField(primary_key=True)
     table_name = models.CharField(max_length=10, default="New table", unique=True)
     max_no_people = models.IntegerField()
@@ -45,6 +51,9 @@ class Table(models.Model):
 
 
 class Reservation(models.Model):
+    """
+    Reservation model, which uses information from Customer and Table
+    """
     reservation_id = models.AutoField(primary_key=True)
     customer_name  = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name="customer", null=True)
     guests_choices = ((1, "1 person"), (2, "2 people"), (3, "3 people"), (4, "4 people"))

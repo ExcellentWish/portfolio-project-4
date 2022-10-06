@@ -44,6 +44,7 @@ class ReservationsEnquiry(View):
     def post(self, request, User=User, *args, **kwargs):
         customer_form = CustomerForm(data=request.POST)
         reservation_form = ReservationForm(data=request.POST)
+        # Retreive number of tables in restaurant
         max_tables = Table.objects.all().count()
 
         logger.warning(f"Maximum number of tables: {max_tables}")
@@ -51,20 +52,21 @@ class ReservationsEnquiry(View):
         # You must be logged in to make in a reservation enquiry
         
         if customer_form.is_valid() and reservation_form.is_valid():
-            
+            # Retreive information from form 
             customer_requested_time = reservation_form.cleaned_data['requested_time']
             customer_requested_date = reservation_form.cleaned_data['requested_date']
             customer_requested_guests = reservation_form.cleaned_data['no_of_guests']
             customer_name = customer_form.cleaned_data['full_name']
-
+            
             logger.warning(f"{customer_requested_time}, {customer_requested_date}")
-
+            # Check to see how many bookings exist at that time/date
             queryset = len(Reservation.objects.filter(
                 requested_time=customer_requested_time, requested_date=customer_requested_date, status="confirmed")
             )
 
             logger.warning(f"{queryset}")
             print(queryset)
+            # Compare number of bookings to number of tables available
             if queryset == max_tables:
 
                 messages.add_message(
@@ -75,6 +77,7 @@ class ReservationsEnquiry(View):
                 {'customer_form': customer_form, 'reservation_form': reservation_form}
                 )   
             else:
+                # Prevent duplicate 'customers' being added to databas
                 customer_email = customer_form.cleaned_data['email']
                 customer_query = len(Customer.objects.filter(email=customer_email))
 
@@ -83,7 +86,7 @@ class ReservationsEnquiry(View):
                     pass
                 else:
                     customer_form.save()
-
+                # Retreive customer information pass to reservation model
                 current_customer = Customer.objects.get(email=customer_email)
                 current_customer_id = current_customer.pk
                 customer = Customer.objects.get(customer_id=current_customer_id)
