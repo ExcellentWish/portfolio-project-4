@@ -100,6 +100,9 @@ class ReservationsEnquiry(View):
 
                     request, messages.SUCCESS, f"Thank you {customer_name}, your enquiry for {customer_requested_time} on {customer_requested_date} has been sent."
                     )
+                # Return blank forms so the same enquiry isn't sent twice.
+                customer_form = CustomerForm()
+                reservation_form = ReservationForm()    
 
                 return render(request, 'reservations.html', {'customer_form': customer_form, 'reservation_form': reservation_form})
         else:
