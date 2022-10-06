@@ -22,12 +22,15 @@
             {% for fooditem in food_items.lunch_items %}
 
             <h5> {{ fooditem.dish_name }} </h5>
-            <em>
-                <p> {{ fooditem.description }}
-            </em> | <strong>€{{ fooditem.price}}</strong></p>
+            <p>
+                <em> {{ fooditem.description }}</em> | <strong>€{{ fooditem.price}}</strong></p>
             <p> {{ fooditem.dietary }} | Allergens: {{ fooditem.allergens }}</p>
 
             {% endfor %}
+            
+            {% else %}
+            <p>Menu being updated - please come back soon!</p>
+
             {% endif %}
         </div>
     </div>
@@ -41,11 +44,14 @@
             {% for fooditem in food_items.dinner_items %}
 
             <h5> {{ fooditem.dish_name }} </h5>
-            <em>
-                <p> {{ fooditem.description }}
-            </em> | <strong>€{{ fooditem.price}}</strong></p>
+            <p>
+                <em> {{ fooditem.description }}</em> | <strong>€{{ fooditem.price}}</strong></p>
             <p> {{ fooditem.dietary }} | Allergens: {{ fooditem.allergens }}</p>
             {% endfor %}
+
+            {% else %}
+            <p>Menu being updated - please come back soon!</p>
+
             {% endif %}
         </div>
     </div>

@@ -20,7 +20,7 @@
             {% for drinkitem in drinks_items.wine_items %}
 
             <h5> {{ drinkitem.drink_name }} </h5>
-            <em> <p> {{ drinkitem.description }} </em> | <strong>€{{ drinkitem.price}}</strong></p>
+            <p> <em> {{ drinkitem.description }} </em> | <strong>€{{ drinkitem.price}}</strong></p>
             
             {% endfor %}
             {% endif %}
@@ -36,7 +36,7 @@
             {% for drinkitem in drinks_items.water_softdrinks_items %}
 
             <h5> {{ drinkitem.drink_name }} </h5>
-            <em> <p> {{ drinkitem.description }} </em> | <strong>€{{ drinkitem.price}}</strong></p>
+            <p> <em> {{ drinkitem.description }} </em> | <strong>€{{ drinkitem.price}}</strong></p>
             
 
             {% endfor %}
@@ -53,10 +53,14 @@
             {% for drinkitem in drinks_items.apéritif_items %}
 
             <h5> {{ drinkitem.drink_name }} </h5>
-            <em> <p> {{ drinkitem.description }} </em> | <strong>€{{ drinkitem.price}}</strong></p>
+            <p> <em> {{ drinkitem.description }} </em> | <strong>€{{ drinkitem.price}}</strong></p>
             
 
             {% endfor %}
+            
+            {% else %}
+            <p>Menu being updated - please come back soon!</p>
+
             {% endif %}
         </div>
     </div>
