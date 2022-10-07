@@ -112,3 +112,15 @@ class ReservationsEnquiry(View):
             request, 'reservations.html', 
             {'customer_form': customer_form, 'reservation_form': reservation_form}
         )
+
+class ManageReservations(View):
+    # View for user to manage any existing reservations
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            messages.add_message(
+                request, messages.SUCCESS, "Your reservations will be displayed here.")
+        else:
+            messages.add_message(
+                request, messages.ERROR, "You must be logged in to manage your reservations.")
+
+        return render(request, 'manage_reservations.html')

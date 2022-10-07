@@ -63,9 +63,19 @@ INSTALLED_APPS = [
 
 SITE_ID = 1
 
+# Email settings
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_EMAIL_REQUIRED = True
+# ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
+ACCOUNT_USERNAME_MIN_LENGTH = 4
+LOGIN_URL = '/accounts/login/'
+
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
+# message settings
 MESSAGE_TAGS = {
     messages.DEBUG: 'alert-info',
     messages.INFO: 'alert-info',
@@ -152,11 +162,6 @@ LOGGING = {
     },
 }
 
-# ACCOUNT_USER_MODEL_USERNAME_FIELD = None
-# ACCOUNT_EMAIL_REQUIRED = True
-# ACCOUNT_USERNAME_REQUIRED = False
-# ACCOUNT_AUTHENTICATION_METHOD = 'email'
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -170,9 +175,9 @@ USE_L10N = True
 
 USE_TZ = True
 
-DATE_INPUT_FORMAT = ['%d/%M/%Y',]
+DATE_INPUT_FORMAT = ['%d/%M/%Y', ]
 
-TIME_INPUT_FORMATS = ['%H:%M',]
+TIME_INPUT_FORMATS = ['%H:%M', ]
 
 
 # Static files (CSS, JavaScript, Images)
