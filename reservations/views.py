@@ -131,3 +131,40 @@ class ManageReservations(generic.ListView):
                 request, messages.ERROR, "You must be logged in to manage your reservations.")
 
         return render(request, 'manage_reservations.html')
+
+class EditReservation(View):
+    def get(self, request, reservation_id, User=User, *args, **kwargs):
+
+        reservation = Reservation.objects.get(reservation_id=reservation_id).first()
+        # reservation_info = reservation.values()
+        logger.warning(reservation)
+        
+        customer_form = CustomerForm(initial={'full_name': request.user.first_name + " " + request.user.last_name, 'email': request.user.email})
+        reservation_form = ReservationForm(instance=reservation)
+        return render(request, 'edit_reservation.html', 
+        {'customer_form': customer_form,
+        'reservation_form': reservation_form,
+        'reservation': reservation,
+        'reservation_id': reservation_id 
+        })
+
+    def post(self, request, reservation_id, User=User, *args, **kwargs):
+        reservation_id = reservation_id
+        reservation = Reservation.objects.filter(reservation_id=reservation_id).first()
+        logger.warning(f"{reservation}")
+        reservation_form = ReservationForm(data=request.POST, instance=reservation)
+        customer_form = CustomerForm(data=request.POST)
+
+        if customer_form.is_valid and reservation_form.is_valid():
+            reservation.reservation_id = reservation_id
+            reservation.requested_time = reservation_form.cleaned_data['requested_time']
+            reservation.requested_date = reservation_form.cleaned_data['requested_date']
+            reservation.requested_guests = reservation_form.cleaned_data['no_of_guests']
+            reservation_form.save(commit=False)
+            reservation_form.save()
+            messages.add_message(request, messages.SUCCESS, "Your reservation has now been updated.")
+            return render(request, 'manage_reservations.html')
+            # return ReservationsEnquiry(request)
+        else:
+            messages.add_message(request, messages.ERROR, "Something is not right with your form - please make sure your email address & phone number are entered in the correct format.")
+            return render(request, 'edit_reservation.html', {'reservation_form': reservation_form, 'customer_form': customer_form, 'reservation': reservation })
