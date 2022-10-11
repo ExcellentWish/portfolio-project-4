@@ -122,8 +122,6 @@ class ManageReservations(generic.ListView):
             current_customer = Customer.objects.get(email=customer_email)
             current_customer_id = current_customer.pk
             logger.warning(f"user = {customer_email}") 
-
-
             get_reservations = Reservation.objects.filter(customer_name=current_customer_id).values().order_by('requested_date')
             logger.warning(f"{get_reservations}")
 
