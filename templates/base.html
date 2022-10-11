@@ -64,9 +64,10 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
+                    <!-- Display logout option if user is logged in -->
                     {% if user.is_authenticated %}
                     <li class="nav-item ml-auto">
-                        <a class="nav-link" href="{% url 'manage_reservations' %}">My Reservations</a>
+                        <a class="nav-link" href="{% url 'manage_reservations' %}">Manage Reservations</a>
                     </li>
                     <li class="nav-item ml-auto">
                         <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
