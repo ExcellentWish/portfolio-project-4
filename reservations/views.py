@@ -156,19 +156,16 @@ class ManageReservations(generic.ListView):
     def get(self, request, User=User, *args, **kwargs):
         if request.user.is_authenticated:
             # Retrieve customer information based upon user info
+            customer_email = request.user.email
+            customer = Customer.objects.filter(email=customer_email).first()
             model = Reservation
             current_reservations = retrieve_reservations(self, request, User)
             paginate_by = 4
 
-            # customer_email = request.user.email
-            # current_customer = Customer.objects.get(email=customer_email)
-            # current_customer_id = current_customer.pk
-            # logger.warning(f"user = {customer_email}") 
-
-            # get_reservations = Reservation.objects.filter(customer_name=current_customer_id).values().order_by('requested_date')
-            # logger.warning(f"{get_reservations}")
-
-            return render(request, 'manage_reservations.html', {'reservations': current_reservations})
+            return render(
+                request, 'manage_reservations.html', 
+                {'reservations': current_reservations,
+                'customer': customer})
         else:
             messages.add_message(
                 request, messages.ERROR, "You must be logged in to manage your reservations.")
@@ -178,13 +175,17 @@ class ManageReservations(generic.ListView):
 class EditReservation(View):
     def get(self, request, reservation_id, User=User, *args, **kwargs):
         reservation = Reservation.objects.filter(reservation_id=reservation_id).first()
+        customer_email = request.user.email
+        customer = Customer.objects.filter(email=customer_email).first()
         # reservation_info = reservation.values()
         logger.warning(reservation)
+        logger.warning(customer)
         
-        customer_form = CustomerForm(initial={'full_name': request.user.first_name + " " + request.user.last_name, 'email': request.user.email})
+        # customer_form = CustomerForm(initial={'full_name': request.user.first_name + " " + request.user.last_name, 'email': request.user.email})
         reservation_form = ReservationForm(instance=reservation)
+
         return render(request, 'edit_reservation.html', 
-        {'customer_form': customer_form,
+        {'customer': customer,
         'reservation_form': reservation_form,
         'reservation': reservation,
         'reservation_id': reservation_id 
