@@ -104,6 +104,30 @@ footer{
     width: 40px;
     height: 40px;
 }
+.footer-heading {
+  text-decoration: underline 1px white;
+}
+#social-media-icons {
+  width: 40px;
+  height: 40px;
+}
+#email-link {
+  text-decoration: none;
+}
+.footer-copyright {
+  border: solid 1px white
+}
+a.icons {
+  color: white;
+  letter-spacing: 4px;
+  text-decoration: none;
+}
+a.icons:hover {
+  text-shadow: 2px 2px 4px #64b4ac;
+}
+a.icons::after {
+  color: white;
+}
 
 /** 404/500 not found**/
 #notfound {
