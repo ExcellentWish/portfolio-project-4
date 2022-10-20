@@ -1,45 +1,48 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo:wght@100;200;300;400;500;600;700&family=Roboto:wght@100;300;400;500;700&display=swap');
+
 /**
 font-family: 'Exo', sans-serif;
 font-family: 'Roboto', sans-serif;
 **/
 body {
-    font-family: 'Exo', sans-serif;
+  font-family: 'Exo', sans-serif;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
 /* Navbar */
 #main-nav {
-    background-color: #64b4ac;
-    color: #Effbed;
+  background-color: #64b4ac;
+  color: #Effbed;
 }
 
 #nav-heading {
-    font-family:'Roboto', sans-serif;
-    font-size: 25px;
-    color: #fdf7f7;
+  font-family: 'Roboto', sans-serif;
+  font-size: 25px;
+  color: #fdf7f7;
 }
 
-.navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link,  .navbar-light .navbar-nav .nav-link:hover  {
-    color: #fdf7f7;
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .nav-link,
+.navbar-light .navbar-nav .nav-link:hover {
+  color: #fdf7f7;
 }
 
 /* Header */
 
 
-.bg-image-full{
-    background: url("https://res.cloudinary.com/dqw7grg7l/image/upload/v1664441120/pp4header_ihotes.jpg")no-repeat;
-    padding-top: 10.5rem;
-    padding-bottom: 6rem;
-    text-align: center;
-    color: #fff;
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-    background-position: center center;
-    background-size: cover;
+.bg-image-full {
+  background: url("https://res.cloudinary.com/dqw7grg7l/image/upload/v1664441120/pp4header_ihotes.jpg")no-repeat;
+  padding-top: 10.5rem;
+  padding-bottom: 6rem;
+  text-align: center;
+  color: #fff;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  background-size: cover;
 }
 
 /* Reservations page */
@@ -83,7 +86,9 @@ li select,
   transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
-input#id_name.textinput.textInput, input#id_email.emailinput, textarea#id_message.textarea {
+input#id_name.textinput.textInput,
+input#id_email.emailinput,
+textarea#id_message.textarea {
   width: 100%;
 }
 
@@ -102,129 +107,168 @@ input#id_name.textinput.textInput, input#id_email.emailinput, textarea#id_messag
 }
 
 /** footer**/
-footer{
-    background-color: #e8575d;
-    font-family: 'Roboto', sans-serif;
+footer {
+  background-color: #e8575d;
+  font-family: 'Roboto', sans-serif;
 }
+
 #social-media-icons {
-    width: 40px;
-    height: 40px;
+  width: 40px;
+  height: 40px;
 }
+
 .footer-heading {
   text-decoration: underline 1px black;
 }
+
 #social-media-icons {
   width: 60px;
   height: 60px;
-  
+
 }
+
 #email-link {
   text-decoration: none;
 }
+
 .footer-copyright {
   border: solid 1px white
 }
+
 a.icons {
   color: white;
   letter-spacing: 4px;
   text-decoration: none;
   font-size: 36px;
 }
+
 a.icons:hover {
   text-shadow: 2px 2px 4px #9D0208;
 }
+
 a.icons::after {
   color: white;
 }
 
 /** 404/500 not found**/
 #notfound {
-    position: relative;
-    height: 100vh;
-  }
-  
-  #notfound .notfound {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    -webkit-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-  }
-  
-  .notfound {
-    max-width: 560px;
-    width: 100%;
-    padding-left: 160px;
-    line-height: 1.1;
-  }
-  
+  position: relative;
+  height: 100vh;
+}
+
+#notfound .notfound {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.notfound {
+  max-width: 560px;
+  width: 100%;
+  padding-left: 160px;
+  line-height: 1.1;
+}
+
+.notfound .notfound-404 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: inline-block;
+  width: 140px;
+  height: 140px;
+  background: url("https://res.cloudinary.com/dqw7grg7l/image/upload/v1665137764/emoji_vpiccc.png");
+  background-size: cover;
+}
+
+.notfound .notfound-404:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-transform: scale(2.4);
+  -ms-transform: scale(2.4);
+  transform: scale(2.4);
+  border-radius: 50%;
+  background-color: #f2f5f8;
+  z-index: -1;
+}
+
+.notfound h1 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 65px;
+  font-weight: 700;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  color: #151723;
+  text-transform: uppercase;
+}
+
+.notfound h2 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 21px;
+  font-weight: 400;
+  margin: 0;
+  text-transform: uppercase;
+  color: #151723;
+}
+
+.notfound p {
+  font-family: 'Nunito', sans-serif;
+  color: #999fa5;
+  font-weight: 400;
+}
+
+.notfound a {
+  font-family: 'Nunito', sans-serif;
+  display: inline-block;
+  font-weight: 700;
+  border-radius: 40px;
+  text-decoration: none;
+  color: #388dbc;
+}
+
+@media screen and (max-width: 768px) {
   .notfound .notfound-404 {
-    position: absolute;
-    left: 0;
-    top: 0;
-    display: inline-block;
-    width: 140px;
-    height: 140px;
-    background: url("https://res.cloudinary.com/dqw7grg7l/image/upload/v1665137764/emoji_vpiccc.png");
-    background-size: cover;
-  }
-  
-  .notfound .notfound-404:before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    -webkit-transform: scale(2.4);
-        -ms-transform: scale(2.4);
-            transform: scale(2.4);
-    border-radius: 50%;
-    background-color: #f2f5f8;
-    z-index: -1;
-  }
-  
-  .notfound h1 {
-    font-family: 'Nunito', sans-serif;
-    font-size: 65px;
-    font-weight: 700;
-    margin-top: 0px;
-    margin-bottom: 10px;
-    color: #151723;
-    text-transform: uppercase;
-  }
-  
-  .notfound h2 {
-    font-family: 'Nunito', sans-serif;
-    font-size: 21px;
-    font-weight: 400;
-    margin: 0;
-    text-transform: uppercase;
-    color: #151723;
-  }
-  
-  .notfound p {
-    font-family: 'Nunito', sans-serif;
-    color: #999fa5;
-    font-weight: 400;
-  }
-  
-  .notfound a {
-    font-family: 'Nunito', sans-serif;
-    display: inline-block;
-    font-weight: 700;
-    border-radius: 40px;
-    text-decoration: none;
-    color: #388dbc;
+    width: 110px;
+    height: 110px;
   }
 
-@media only screen and (max-width: 767px) {
-    .notfound .notfound-404 {
-      width: 110px;
-      height: 110px;
-    }
-    .notfound {
-      padding-left: 15px;
-      padding-right: 15px;
-      padding-top: 110px;
-    }
+  .notfound {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 110px;
   }
+
+  /**reservation form **/
+  #full-form {
+    padding-left: 0px;
+  }
+
+  #full-form li label,
+  #full-form label {
+    margin-left: 0px;
+    padding-bottom: 2px;
+
+  }
+
+  #full-form input,
+    {
+    width: 260px;
+  }
+
+  #full-form li select {
+    width: 260px;
+  }
+
+  li input,
+  li select,
+  .input-group.date {
+    width: 262px;
+    margin-right: 30px;
+    float: right;
+  }
+
+}
