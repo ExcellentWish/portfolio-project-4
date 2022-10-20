@@ -105,11 +105,12 @@ footer{
     height: 40px;
 }
 .footer-heading {
-  text-decoration: underline 1px white;
+  text-decoration: underline 1px black;
 }
 #social-media-icons {
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
+  
 }
 #email-link {
   text-decoration: none;
@@ -121,9 +122,10 @@ a.icons {
   color: white;
   letter-spacing: 4px;
   text-decoration: none;
+  font-size: 36px;
 }
 a.icons:hover {
-  text-shadow: 2px 2px 4px #64b4ac;
+  text-shadow: 2px 2px 4px #9D0208;
 }
 a.icons::after {
   color: white;
