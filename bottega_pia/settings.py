@@ -52,7 +52,6 @@ INSTALLED_APPS = [
     'phone_field',
     'bootstrap5',
     'bootstrap4',
-    "bootstrap_datepicker_plus",
     'phonenumber_field',
     'website',
     'crispy_forms',
@@ -187,11 +186,13 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = False
 
 USE_TZ = True
 
 DATE_INPUT_FORMAT = ['%d/%M/%Y', ]
+
+DATE_FORMAT = [ 'd m Y' ]
 
 TIME_INPUT_FORMATS = ['%H:%M', ]
 

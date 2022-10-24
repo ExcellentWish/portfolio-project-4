@@ -6,7 +6,6 @@ from .models import Table, Customer, Reservation
 from .forms import CustomerForm, ReservationForm
 from django.template.context_processors import csrf
 import datetime
-from bootstrap_datepicker_plus.widgets import DateTimePickerInput, DatePickerInput, TimePickerInput
 from django.contrib.auth.models import User
 import logging
 from django.contrib.auth.decorators import login_required
@@ -73,7 +72,7 @@ class ReservationsEnquiry(View):
         reservation_form = ReservationForm(data=request.POST)
         
 
-        logger.warning(f"Maximum number of tables: {max_tables}")
+        # logger.warning(f"Maximum number of tables: {max_tables}")
 
         # You must be logged in to make in a reservation enquiry
         
