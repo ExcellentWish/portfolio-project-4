@@ -12,8 +12,6 @@ import logging
 from django.contrib.auth.decorators import login_required
 
 logger = logging.getLogger(__name__)
-# Retreive number of tables in restaurant
-max_tables = Table.objects.all().count()
 
 
 def retreive_customer_info(reservation_form, customer_form):
@@ -38,6 +36,11 @@ def get_customer_instance(request, User):
     customer_email = request.user.email
     customer = Customer.objects.filter(email=customer_email).first()
     return customer    
+
+def get_tables_info():
+    max_tables = Table.objects.all().count
+
+    return max_tables
 
 # Create your views here.
 class ReservationsEnquiry(View):
@@ -79,6 +82,7 @@ class ReservationsEnquiry(View):
             customer_requested_time, customer_requested_date, customer_requested_guests, customer_name, customer_phone_number = retreive_customer_info(reservation_form, customer_form)
             # Check to see how many bookings exist at that time/date
             table_availability = check_availabilty(customer_requested_time, customer_requested_date)
+            max_tables = get_tables_info
 
             # Compare number of bookings to number of tables available
             if tables_booked == max_tables:
@@ -201,7 +205,8 @@ class EditReservation(View):
             customer_requested_date = reservation_form.cleaned_data['requested_date']
             # Check the amount of tables already booked at that date and time
             tables_booked = check_availabilty(customer_requested_time, customer_requested_date)
-
+            # Get total number of tables in restaurant
+            max_tables = get_tables_info
             # Compare number of bookings to number of tables available
             if tables_booked == max_tables:
                 # if the amount of tables already booked = the max tables then reject the reservation.
