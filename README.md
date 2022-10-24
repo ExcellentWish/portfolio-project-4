@@ -24,7 +24,7 @@ This is a full-stack frameworks project built using Django, Python, HTML, CSS an
       - [Heroku](#heroku)
       - [Heroku Deployment](#heroku-deployment)
   - [Credits](#credits)
-  - [Acknowledgement](#acknowledgement)
+  - [Acknowledgements](#acknowledgements)
 
 ## User Experience
 The user will be looking for:
@@ -94,7 +94,6 @@ I have used several technologies that have enabled this design to work:
     - Python is the core programming language used to write all of the code in this application to make it fully functional.
 - [Bootstrap](https://getbootstrap.com/docs/5.2/getting-started/introduction/)
     - For help with HTML and CSS layout 
-
 - [GitHub](https://github.com/)
     - Used to store code for the project after being pushed.
 - [Git](https://git-scm.com/)
@@ -113,6 +112,16 @@ I have used several technologies that have enabled this design to work:
     - To help test colours I will use
 - [Coolers] (https://coolors.co)
     - To help find colours to use
+- [W3C Markup Validation Service](https://validator.w3.org/) 
+    - Used to validate all HTML code written and used in this webpage.
+- [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/#validate_by_input)
+    - Used to validate all CSS code written and used in this webpage.
+- [Freeformatter CSS Beautify](https://www.freeformatter.com/css-beautifier.html)
+    - Used to accurately format my CSS code.
+- [Freeformatter HTML Formatter](https://www.freeformatter.com/html-formatter.html)
+    - Used to accurately format my HTML code.
+- [AmIResponsive](http://ami.responsivedesign.is/)
+    - Used to generate responsive image used in README file.
 
 ## Testing
 Testing Document is found [here](https://docs.google.com/spreadsheets/d/15nLGvvOe-gkxcLGmvUc7a_84_5jA6UGyUBGgMEQ42Fg/edit#gid=0)
@@ -158,5 +167,13 @@ In the Deploy tab:
 ## Credits
 
 https://startbootstrap.com/theme/agency helped with header
+https://docs.djangoproject.com/en/4.1/
+https://github.com/pennersr/django-allauth
 
-## Acknowledgement
+Matt Rudge for his Django I think therefore I blog on [Code Institute](https://codeinstitute.net)
+
+
+
+## Acknowledgements
+
+I would like to thank my course mentor Ronan McClelland for his support and guidance throughout the course of the project and Kasia Bogucka and my peers from Msletb slack group for their support & feedback.
