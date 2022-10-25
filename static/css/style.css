@@ -150,6 +150,18 @@ a.icons::after {
   color: white;
 }
 
+/** Sign up page**/
+#signup_form,
+.login {
+    text-align: left;
+}
+
+#signup_form input,
+.login input {
+    float: right;
+    width: 250px;
+}
+
 /** 404/500 not found**/
 #notfound {
   position: relative;

@@ -53,7 +53,7 @@ class ContactPage(View):
         if request.method == 'POST':
             contact_form = ContactForm(request.POST)
 
-            if form.is_valid():
+            if contact_form.is_valid():
                 # Return blank form so the same message isn't posted twice.
                 send_message(request, contact_form)
                 contact_form = ContactForm()
