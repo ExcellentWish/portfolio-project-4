@@ -80,7 +80,7 @@ class ReservationsEnquiry(View):
             # Retreive information from forms 
             customer_requested_time, customer_requested_date, customer_requested_guests, customer_name, customer_phone_number = retreive_customer_info(reservation_form, customer_form)
             # Check to see how many bookings exist at that time/date
-            table_availability = check_availabilty(customer_requested_time, customer_requested_date)
+            tables_booked = check_availabilty(customer_requested_time, customer_requested_date)
             max_tables = get_tables_info
 
             # Compare number of bookings to number of tables available
