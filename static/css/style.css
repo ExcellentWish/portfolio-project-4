@@ -92,6 +92,16 @@ textarea#id_message.textarea {
   width: 100%;
 }
 
+/**Date picker **/
+.ui-widget {
+  font-family: 'Roboto', sans-serif;
+}
+
+.ui-widget-header {
+  background: #64b4ac;
+  color: #fff;
+}
+
 /* Manage Reservations page */
 
 .confirmed {
