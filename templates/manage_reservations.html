@@ -4,24 +4,14 @@
 
 {% block content %}
 
-
-
-<!-- To display date picker -->
-{% load bootstrap4 %}
-<!-- {% bootstrap_css %} -->
-{% bootstrap_javascript jquery='full' %}
-<!-- Media to display date picker -->
-{{ reservation_form.media }}
-<div class="row">
-    <div class="col-sm-2"></div>
-    <div class="col-sm-8">
-        <h2 class="text-center mt-2 mb-3">Manage your reservations at Bottega Pia</h2>
-        <h5 class="text-center mt-2 mb-5"><strong>{{ customer.full_name }}</strong> if you have made any previous reservations they will be displayed below.</h5>
-    </div> 
-</div>
 <div class="container">
-    <div class="row">
-        <div class="col-sm-3"></div>
+    <div class="row d-flex justify-content-center">
+        <h2 class="text-center mt-2 mb-3">Manage your reservations at Bottega Pia</h2>
+        <h5 class="text-center mt-2 mb-5"><strong>{{ customer.full_name }}</strong> if you have made any previous
+            reservations they will be displayed below.</h5>
+    </div>
+
+    <div class="row d-flex justify-content-center">
         <div class="col-sm-6">
             <ul id="reservation-list">
                 {% for reservation in reservations %}
@@ -30,8 +20,9 @@
                         {{ reservation.requested_time }} on {{ reservation.requested_date }} </h5>
                     <p> This reservation is <strong class="{{ reservation.status }}">{{ reservation.status }}</strong>
                     </p>
-                    <p><a href="{% url 'edit_reservation' reservation.reservation_id %}">Edit Reservation</a> | 
-                        <a href="{% url 'delete_reservation' reservation.reservation_id %}">Delete Reservation</a></p></p>
+                    <p><a href="{% url 'edit_reservation' reservation.reservation_id %}">Edit Reservation</a> |
+                        <a href="{% url 'delete_reservation' reservation.reservation_id %}">Delete Reservation</a></p>
+                    </p>
                     <hr>
                 </li>
                 {% endfor %}
