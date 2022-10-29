@@ -170,7 +170,7 @@ https://startbootstrap.com/theme/agency helped with header
 https://docs.djangoproject.com/en/4.1/
 https://github.com/pennersr/django-allauth
 https://jqueryui.com/
-
+https://www.youtube.com/watch?v=TZL-WFzvDJg email
 
 Matt Rudge for his Django I think therefore I blog on [Code Institute](https://codeinstitute.net)
 

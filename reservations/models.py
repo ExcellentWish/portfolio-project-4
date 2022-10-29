@@ -3,7 +3,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 import datetime
 from django.contrib.auth.models import User
 
-status_choices = (("pending", "pending"), ("confirmed", "confirmed"))
+status_choices = (("pending", "pending"), ("confirmed", "confirmed"),("rejected", "rejected"))
 time_choices = (
     ("12:30", "12:30"),
     ("13:00", "13:00"),

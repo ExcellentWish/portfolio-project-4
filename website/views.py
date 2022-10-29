@@ -12,14 +12,6 @@ def index(request):
     # Return homepage
     return render(request, 'index.html')
 
-def menus(request):
-    return render(request, 'menus.html')    
-
-
-
-def reservations(request):
-    return render(request, 'reservations.html') 
-
 def send_message(request, contact_form):
     # Function to send email after contact form submitted
     customer_name = contact_form.cleaned_data['name']
@@ -27,7 +19,7 @@ def send_message(request, contact_form):
     subject = (f'Message from {customer_name}, {email_from}')
     message = contact_form.cleaned_data['message']
     recipient_list = [settings.EMAIL_HOST_USER]
-    send_mail( subject, message, email_from, recipient_list )
+    send_mail(subject, message, email_from, recipient_list )
 
 def get_customer_instance(request, User):
     # Returns customer instance if User is logged in
@@ -39,6 +31,7 @@ class ContactPage(View):
     """
     Contact page - for a user to send a contact form.
     """
+    
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             customer = get_customer_instance(request, User)
@@ -63,19 +56,21 @@ class ContactPage(View):
 
 
     def post(self, request, User=User, *args, **kwargs):
-        contact_form = ContactForm(request.POST)
-        if contact_form.is_valid():
-            # Send email to website owner
-            send_message(request, contact_form)
-            # Return blank form so the same message isn't posted twice.
-            contact_form = ContactForm()
-            messages.add_message(
-                request, messages.SUCCESS,
-                "Thank you for contacting us, one of our staff will be in "
-                "touch shortly. <br>For anything urgent please call on "
-                "+39 329 277 0444.")
-            return render(
-                request, 'contact_us.html', {'contact_form': contact_form})
+        contact_form = ContactForm()
+        if request.method == 'POST':
+            contact_form = ContactForm(request.POST)
+            if contact_form.is_valid():
+                # Send email to website owner
+                send_message(request, contact_form)
+                # Return blank form so the same message isn't posted twice.
+                contact_form = ContactForm()
+                messages.add_message(
+                    request, messages.SUCCESS,
+                    "Thank you for contacting us, one of our staff will be in "
+                    "touch shortly. <br>For anything urgent please call on "
+                    "+39 329 277 0444.")
+                return render(
+                    request, 'contact_us.html', {'contact_form': contact_form})
 
         else:
             contact_form = ContactForm(request.POST)
