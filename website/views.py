@@ -56,21 +56,19 @@ class ContactPage(View):
 
 
     def post(self, request, User=User, *args, **kwargs):
-        contact_form = ContactForm()
-        if request.method == 'POST':
-            contact_form = ContactForm(request.POST)
-            if contact_form.is_valid():
-                # Send email to website owner
-                send_message(request, contact_form)
-                # Return blank form so the same message isn't posted twice.
-                contact_form = ContactForm()
-                messages.add_message(
-                    request, messages.SUCCESS,
-                    "Thank you for contacting us, one of our staff will be in "
-                    "touch shortly. <br>For anything urgent please call on "
-                    "+39 329 277 0444.")
-                return render(
-                    request, 'contact_us.html', {'contact_form': contact_form})
+        contact_form = ContactForm(request.POST)
+        if contact_form.is_valid():
+            # Send email to website owner
+            send_message(request, contact_form)
+            # Return blank form so the same message isn't posted twice.
+            contact_form = ContactForm()
+            messages.add_message(
+                request, messages.SUCCESS,
+                "Thank you for contacting us, one of our staff will be in "
+                "touch shortly. <br>For anything urgent please call on "
+                "+39 329 277 0444.")
+            return render(
+                request, 'contact_us.html', {'contact_form': contact_form})
 
         else:
             contact_form = ContactForm(request.POST)
