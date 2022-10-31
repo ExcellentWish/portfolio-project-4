@@ -145,6 +145,18 @@ footer {
   border: solid 1px white
 }
 
+footer .g-maplink{
+  color: black;
+}
+footer .g-maplink::after {
+  color: black;
+}
+
+a.g-maplink:hover {
+  text-shadow: 2px 2px 4px #9D0208;
+}
+
+
 a.icons {
   color: white;
   letter-spacing: 4px;
@@ -161,10 +173,9 @@ a.icons::after {
 }
 
 #map {
-  height: 400px;
-  /* The height is 400 pixels */
-  width: 100%;
-  /* The width is the width of the web page */
+  width:300px;
+  height:250px;
+  border:0;
 }
 
 /** Sign up page**/
