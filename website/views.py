@@ -19,7 +19,7 @@ def send_message(request, contact_form):
     subject = (f'Message from {customer_name}, {email_from}')
     message = contact_form.cleaned_data['message']
     recipient_list = [settings.EMAIL_HOST_USER]
-    send_mail(subject, message, email_from, recipient_list )
+    send_mail(subject, message, email_from, recipient_list)
 
 def get_customer_instance(request, User):
     # Returns customer instance if User is logged in

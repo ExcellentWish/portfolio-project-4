@@ -22,13 +22,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
     <!-- Favicon-->
-    <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/dqw7grg7l/image/upload/v1666864144/PP4/static/favicon/apple-touch-icon_zmssar.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/dqw7grg7l/image/upload/v1666864144/PP4/static/favicon/favicon-32x32_gmujjr.png}">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://res.cloudinary.com/dqw7grg7l/image/upload/v1666864144/PP4/static/favicon/favicon-16x16_ivj0mz.png">
-    <link rel="manifest" href="https://res.cloudinary.com/dqw7grg7l/raw/upload/v1666864144/PP4/static/favicon/site_gr4qt8.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180"
+        href="https://res.cloudinary.com/dqw7grg7l/image/upload/v1666864144/PP4/static/favicon/apple-touch-icon_zmssar.png">
+    <link rel="icon" type="image/png" sizes="32x32"
+        href="https://res.cloudinary.com/dqw7grg7l/image/upload/v1666864144/PP4/static/favicon/favicon-32x32_gmujjr.png}">
+    <link rel="icon" type="image/png" sizes="16x16"
+        href="https://res.cloudinary.com/dqw7grg7l/image/upload/v1666864144/PP4/static/favicon/favicon-16x16_ivj0mz.png">
+    <link rel="manifest"
+        href="https://res.cloudinary.com/dqw7grg7l/raw/upload/v1666864144/PP4/static/favicon/site_gr4qt8.webmanifest">
 
     <!--Personal style-->
-    <link rel="stylesheet" href="https://res.cloudinary.com/dqw7grg7l/raw/upload/v1666864144/PP4/static/css/style_pyy0nm.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>Bottega Pia</title>
 </head>
 
@@ -119,7 +123,7 @@
         <div class="container">
             <!-- Grid column -->
             <div class="row d-flex justify-content-between">
-                <div class="col-sm pt-5 pb-2">
+                <div class="col-sm-8 col-md-6 col-lg-4 mt-4 pb-2">
                     <div class="footer-widget">
                         <h5 class="footer-heading">Opening Hours</h5>
                         <div class="footer-widget-content">
@@ -130,45 +134,45 @@
                             </div>
                         </div>
                     </div>
-                </div>    
+                </div>
 
-                <div class="col-sm"></div>
-                    
-                <div class="col-sm pt-5 pb-2">
-                        <h5 class="footer-heading">Stay in touch</h5>
-                        <p id="email-link">Email:<a href="mailto: nigel.doheny93@gmail.com">info@bottega.fakemail</a>
-                        </p>
-                        <p>Phone: +39 329 277 0444</p>
-                        <div class="mb-2 flex-center">
-                            <!-- Social media links -->
-                            <!-- Facebook -->
-                            <a class="icons" href="https://www.facebook.com/"
-                                aria-label="Take a look at our facebook, opens in a new tab" target="_blank"
-                                rel="noreferrer">
-                                <i class="fa-brands fa-facebook fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                            </a>
-                            <!-- Twitter -->
-                            <a class="icons" href="https://twitter.com/?lang=en"
-                                aria-label="Take a look at our instagram, opens in a new tab" target="_blank"
-                                rel="noreferrer">
-                                <i class="fa-brands fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                            </a>
-                            <!--Instagram-->
-                            <a class="icons" aria-label="Take a look at our twitter, opens in a new tab" target="_blank"
-                                rel="noreferrer">
-                                <i class="fa-brands fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                            </a>
-                        </div>
+                <div class="col-sm" id="map"></div>
+
+                <div class="col-sm-8 col-md-6 col-lg-4 mt-4 pb-2">
+                    <h5 class="footer-heading">Stay in touch</h5>
+                    <p id="email-link">Email:<a href="mailto: nigel.doheny93@gmail.com">info@bottega.fakemail</a>
+                    </p>
+                    <p>Phone: +39 329 277 0444</p>
+                    <div class="mb-2 flex-center">
+                        <!-- Social media links -->
+                        <!-- Facebook -->
+                        <a class="icons" href="https://www.facebook.com/"
+                            aria-label="Take a look at our facebook, opens in a new tab" target="_blank"
+                            rel="noreferrer">
+                            <i class="fa-brands fa-facebook fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        </a>
+                        <!-- Twitter -->
+                        <a class="icons" href="https://twitter.com/?lang=en"
+                            aria-label="Take a look at our instagram, opens in a new tab" target="_blank"
+                            rel="noreferrer">
+                            <i class="fa-brands fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        </a>
+                        <!--Instagram-->
+                        <a class="icons" aria-label="Take a look at our twitter, opens in a new tab" target="_blank"
+                            rel="noreferrer">
+                            <i class="fa-brands fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                        </a>
                     </div>
                 </div>
             </div>
-        
+        </div>
 
-            <!-- Copyright -->
-            <div class="footer-copyright text-center py-3">Copyright: <span id="copyright"></span>©
-                <p>Bottega Pia</p>
-            </div>
-            <!-- Copyright -->
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">Copyright: <span id="copyright"></span>©
+            <p>Bottega Pia</p>
+        </div>
+        <!-- Copyright -->
 
     </footer>
 
@@ -178,10 +182,38 @@
     <!-- Font awesome -->
     <script src="https://kit.fontawesome.com/0f96215e04.js" crossorigin="anonymous"></script>
     <!-- Personal JS -->
-    <script src="https://res.cloudinary.com/dqw7grg7l/raw/upload/v1666864145/PP4/static/js/script_gzz0kp.js"></script>
+    <script src="{% static 'js/script.js' %}"></script>
 
     <script>
         $("#copyright").text(new Date().getFullYear());
+    </script>
+
+    <script>
+        // Initialize and add the map
+        function initMap() {
+            // The location of Bottega Pia 41.7312638,12.6584794
+            const uluru = {
+                lat: 41.7312638,
+                lng: 12.6584794
+            };
+            // The map, centered at Bottega Pia
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 20,
+                center: uluru,
+            });
+            // The marker, positioned at Uluru
+            const marker = new google.maps.Marker({
+                position: uluru,
+                map: map,
+            });
+        }
+
+        window.initMap = initMap;
+    </script>
+
+
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0aaAt26ZbW6wtsRgIyNGs_HBHgAO1N5w&callback=initMap">
     </script>
 
 

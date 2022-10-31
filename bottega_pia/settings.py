@@ -194,7 +194,7 @@ USE_TZ = True
 
 DATE_INPUT_FORMAT = ['%d/%M/%Y', ]
 
-DATE_FORMAT = [ 'd m Y' ]
+DATE_FORMAT = 'd m Y'
 
 TIME_INPUT_FORMATS = ['%H:%M', ]
 
