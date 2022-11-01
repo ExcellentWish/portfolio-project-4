@@ -137,11 +137,15 @@
                 </div>
                 <!--Map-->
                 <div class="col-sm-8 col-md-6 col-lg-4 mt-4 pb-2">
-                    <h5 class="footer-heading"><a target="_blank" aria-label="Open link to google maps to locate restaurant" class="g-maplink"
-                        href="https://www.google.com/maps/place/Bottega+Pia/@41.7312638,12.6584794,20z/data=!4m5!3m4!1s0x1325850199daf471:0xcbb6308242f53387!8m2!3d41.7313182!4d12.6584921">Find
-                        Us</a></h5>
+                    <h5 class="footer-heading"><a target="_blank"
+                            aria-label="Open link to google maps to locate restaurant" class="g-maplink"
+                            href="https://www.google.com/maps/place/Bottega+Pia/@41.7312638,12.6584794,20z/data=!4m5!3m4!1s0x1325850199daf471:0xcbb6308242f53387!8m2!3d41.7313182!4d12.6584921">Find
+                            Us</a></h5>
                     <div class="d-flex justify-content-center">
-                        <div class="mb-2 map-section" id="map"></div>
+
+                        <div class="mb-2 map-section" id="map">
+
+                        </div>
                     </div>
                 </div>
 
@@ -190,33 +194,13 @@
     <script src="https://kit.fontawesome.com/0f96215e04.js" crossorigin="anonymous"></script>
     <!-- Personal JS -->
     <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/map.js' %}"></script>
 
     <script>
         $("#copyright").text(new Date().getFullYear());
     </script>
 
-    <script>
-        // Initialize and add the map
-        function initMap() {
-            // The location of Bottega Pia 41.7312638,12.6584794
-            const uluru = {
-                lat: 41.7312638,
-                lng: 12.6584794
-            };
-            // The map, centered at Bottega Pia
-            const map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 20,
-                center: uluru,
-            });
-            // The marker, positioned at Uluru
-            const marker = new google.maps.Marker({
-                position: uluru,
-                map: map,
-            });
-        }
 
-        window.initMap = initMap;
-    </script>
 
 
     <script async defer
