@@ -20,7 +20,7 @@
 
             <h5> {{ fooditem.dish_name }} </h5>
             <p>
-                <em> {{ fooditem.description }}</em> | <strong>€{{ fooditem.price}}</strong></p>
+                <em> {{ fooditem.description }}</em> | <strong>€{{ fooditem.price |floatformat:2 }}</strong></p>
             <p> {{ fooditem.dietary }} | Allergens: {{ fooditem.allergens }}</p>
 
             {% endfor %}
@@ -39,7 +39,7 @@
 
             <h5> {{ fooditem.dish_name }} </h5>
             <p>
-                <em> {{ fooditem.description }}</em> | <strong>€{{ fooditem.price}}</strong></p>
+                <em> {{ fooditem.description }}</em> | <strong>€{{ fooditem.price |floatformat:2 }}</strong></p>
             <p> {{ fooditem.dietary }} | Allergens: {{ fooditem.allergens }}</p>
             {% endfor %}
 
