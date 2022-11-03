@@ -170,9 +170,6 @@ class EditReservation(View):
     def get(self, request, reservation_id, User=User, *args, **kwargs):
         # Get reservation object based on id
         reservation = get_object_or_404(Reservation, reservation_id=reservation_id)
-        # reservation = Reservation.objects.filter(reservation_id=reservation_id).first()
-        # customer_email = request.user.email
-        # customer = Customer.objects.filter(email=customer_email).first()
         customer = get_customer_instance(request, User)
         logger.warning(reservation)
         logger.warning(customer)
@@ -189,8 +186,6 @@ class EditReservation(View):
         })
 
     def post(self, request, reservation_id, User=User, *args, **kwargs):
-        # customer_email = request.user.email
-        # customer = Customer.objects.filter(email=customer_email).first()
         customer = get_customer_instance(request, User)
         reservation_id = reservation_id
         reservation = get_object_or_404(Reservation, reservation_id=reservation_id)
