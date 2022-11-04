@@ -1,9 +1,12 @@
 from django.conf import settings
 from .models import Customer, Reservation
 from django import forms
+from phonenumber_field.formfields import PhoneNumberField
 
 
 class CustomerForm(forms.ModelForm):
+    phone_number = PhoneNumberField(widget=forms.TextInput(
+            attrs={'placeholder': ('Please enter in +353 format')}))
     class Meta:
         model = Customer
         fields = ('full_name', 'email', 'phone_number')

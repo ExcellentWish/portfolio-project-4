@@ -94,6 +94,12 @@ I have used several technologies that have enabled this design to work:
     - Python is the core programming language used to write all of the code in this application to make it fully functional.
 - [Bootstrap](https://getbootstrap.com/docs/5.2/getting-started/introduction/)
     - For help with HTML and CSS layout 
+- [Google Fonts](https://fonts.google.com/)
+    - Used to obtain the fonts linked in the header, fonts used were Playfair and Cookie
+- [Font Awesome](https://fontawesome.com/)
+    - Used to obtain the icons used on the high scores and rules pages.
+- [Google Developer Tools](https://developers.google.com/web/tools/chrome-devtools)
+    - Used as a primary method of fixing spacing issues, finding bugs, and testing responsiveness across the project.
 - [GitHub](https://github.com/)
     - Used to store code for the project after being pushed.
 - [Git](https://git-scm.com/)

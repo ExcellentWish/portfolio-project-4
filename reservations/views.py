@@ -32,11 +32,13 @@ def check_availabilty(customer_requested_time, customer_requested_date):
     return no_tables_booked
 
 def get_customer_instance(request, User):
+     # Returns customer instance if User is logged in 
     customer_email = request.user.email
     customer = Customer.objects.filter(email=customer_email).first()
     return customer    
 
 def get_tables_info():
+    # Retrieves the number of tables in the table model
     max_tables = Table.objects.all().count
 
     return max_tables
@@ -104,7 +106,7 @@ class ReservationsEnquiry(View):
                 else:
                     customer_form.save()
                 # Retreive customer information pass to reservation model
-                current_customer = Customer.objects.get(email=customer_email)
+                current_customer = get_customer_instance(request, User)
                 current_customer_id = current_customer.pk
                 customer = Customer.objects.get(customer_id=current_customer_id)
                 logger.warning(f"Customer ID is: {current_customer_id}")
@@ -132,33 +134,48 @@ class ReservationsEnquiry(View):
 
 
 def retrieve_reservations(self, request, User):
-    customer_email = request.user.email
-    current_customer = Customer.objects.get(email=customer_email)
-    current_customer_id = current_customer.pk
-    logger.warning(f"user = {customer_email}") 
+    if len(Customer.objects.filter(email=customer_email)) != 0:
+        current_customer = Customer.objects.get(email=customer_email)
+        current_customer_id = current_customer.pk
+        logger.warning(f"user = {customer_email}") 
 
-    get_reservations = Reservation.objects.filter(customer_name=current_customer_id).values().order_by('requested_date')
-    logger.warning(f"{get_reservations}")
+        get_reservations = Reservation.objects.filter(customer_name=current_customer_id).values().order_by('requested_date')
+        logger.warning(f"{get_reservations}")
 
-    return get_reservations
+        if len(get_reservations) == 0:
+            logger.warning(f"No existing reservations.") 
+            return 1
+        else:
+            return get_reservations
+    else:
+        logger.warning(f"No user in customer model") 
+        return 1        
 
 
 class ManageReservations(generic.ListView):
     # View for user to manage any existing reservations
     def get(self, request, User=User, *args, **kwargs):
         if request.user.is_authenticated:
-            # Retrieve customer information based upon user info
-            # customer_email = request.user.email
-            # customer = Customer.objects.filter(email=customer_email).first()
             customer = get_customer_instance(request, User)
             model = Reservation
             current_reservations = retrieve_reservations(self, request, User)
-            paginate_by = 4
+            # If the user has no reservations
+            if current_reservations == 0:
+                messages.add_message(request, messages.WARNING, "Ooops, you've not got any existing reservations. You can make reservations here.")
+                url = reverse('reservations')
+                return HttpResponseRedirect(url)
+            # If the user does not exist in the customer model 
+            elif current_reservations == 1:
+                messages.add_message(request, messages.WARNING, "Ooops, you've never made a reservation enquiry. You can make reservations here.")
+                url = reverse('reservations')
+                return HttpResponseRedirect(url)
 
-            return render(
-                request, 'manage_reservations.html', 
-                {'reservations': current_reservations,
-                'customer': customer})
+            else:
+                pass
+                return render(
+                    request, 'manage_reservations.html', 
+                    {'reservations': current_reservations,
+                    'customer': customer})
         else:
             messages.add_message(
                 request, messages.ERROR, "You must be logged in to manage your reservations.")
@@ -232,7 +249,6 @@ class DeleteReservation(View):
     # View for user to delete reservations
     def get(self, request, reservation_id, User=User, *args, **kwargs):
         reservation = get_object_or_404(Reservation, reservation_id=reservation_id)
-        # customer_email = request.user.email
         customer = get_customer_instance(request, User)
 
         return render(request, 'delete_reservation.html',
