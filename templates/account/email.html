@@ -36,11 +36,14 @@
           </div>
           {% endfor %}
 
-          <div class="buttonHolder">
-            <button class="secondaryAction" type="submit" name="action_primary">{% trans 'Make Primary' %}</button>
-            <button class="secondaryAction" type="submit" name="action_send">{% trans 'Re-send Verification' %}</button>
-            <button class="primaryAction" type="submit" name="action_remove">{% trans 'Remove' %}</button>
-          </div>
+          <ul class="buttonHolder text-center mt-5">
+            <li class="mb-2"><button class="secondaryAction button submit-button" type="submit"
+                name="action_primary">{% trans 'Make Primary' %}</button></li>
+            <li class="mb-2"><button class="secondaryAction button submit-button" type="submit"
+                name="action_send">{% trans 'Re-send Verification' %}</button></li>
+            <li class="mb-2"><button class="primaryAction button submit-button" type="submit"
+                name="action_remove">{% trans 'Remove' %}</button></li>
+          </ul>
 
         </fieldset>
       </form>

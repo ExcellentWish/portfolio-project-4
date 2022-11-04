@@ -190,6 +190,15 @@ a.icons::after {
     width: 250px;
 }
 
+/** email page **/
+.buttonHolder {
+  display: inline;
+}
+
+.buttonHolder li {
+  list-style: none;
+}
+
 /** 404/500 not found**/
 #notfound {
   position: relative;
