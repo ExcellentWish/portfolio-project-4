@@ -15,5 +15,4 @@ class ReservationForm(forms.ModelForm):
     requested_date = forms.DateField(input_formats=settings.DATE_INPUT_FORMAT)
     class Meta:
         model = Reservation
-        fields = ('no_of_guests','requested_date', 'requested_time')
-           
+        fields = ('no_of_guests','requested_date', 'requested_time')   
