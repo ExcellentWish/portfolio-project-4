@@ -4,27 +4,27 @@ from django.http import HttpResponseRedirect
 from django.contrib import messages
 from .models import Table, Customer, Reservation
 from .forms import CustomerForm, ReservationForm
-from django.template.context_processors import csrf
-import datetime
+# from django.template.context_processors import csrf
 from django.contrib.auth.models import User
+# from django.contrib.auth.decorators import login_required
+import datetime
 import logging
-from django.contrib.auth.decorators import login_required
+
 
 logger = logging.getLogger(__name__)
 
 
-def retreive_customer_info(reservation_form, customer_form):
-    # Retreive information from form 
-    customer_requested_time = reservation_form.cleaned_data['requested_time']
-    customer_requested_date = reservation_form.cleaned_data['requested_date']
-    customer_requested_guests = reservation_form.cleaned_data['no_of_guests']
-    customer_name = customer_form.cleaned_data['full_name']
-    customer_phone_number = customer_form.cleaned_data['phone_number']
-    logger.warning(f"{customer_requested_time}, {customer_requested_date}")
-    return customer_requested_time, customer_requested_date, customer_requested_guests, customer_name, customer_phone_number
+# def retreive_customer_info(reservation_form, customer_form):
+#     # Retreive information from form 
+#     customer_requested_time = reservation_form.cleaned_data['requested_time']
+#     customer_requested_date = reservation_form.cleaned_data['requested_date']
+#     customer_requested_guests = reservation_form.cleaned_data['no_of_guests']
+#     customer_name = customer_form.cleaned_data['full_name']
+#     customer_phone_number = customer_form.cleaned_data['phone_number']
+#     logger.warning(f"{customer_requested_time}, {customer_requested_date}")
+#     return customer_requested_time, customer_requested_date, customer_requested_guests, customer_name, customer_phone_number
 
 def check_availabilty(customer_requested_time, customer_requested_date):
-    logger.warning(f"{customer_requested_time}, {customer_requested_date}")
     # Check to see how many bookings exist at that time/date
     no_tables_booked = len(Reservation.objects.filter(
         requested_time=customer_requested_time, requested_date=customer_requested_date, status="confirmed"))
@@ -37,6 +37,7 @@ def get_customer_instance(request, User):
     customer = Customer.objects.filter(email=customer_email).first()
     return customer    
 
+
 def get_tables_info():
     # Retrieves the number of tables in the table model
     max_tables = Table.objects.all().count
@@ -45,29 +46,24 @@ def get_tables_info():
 
 # Create your views here.
 class ReservationsEnquiry(View):
-    template_name = "reservations.html"
     def get(self, request, *args, **kwargs):    
         if request.user.is_authenticated:
             customer = get_customer_instance(request, User)
-            customer_form = CustomerForm(instance=customer)
+            if customer is None:
+                email = request.user.email
+                customer_form = CustomerForm(initial={'email': email})
+            else:
+                customer_form = CustomerForm(instance=customer)
             reservation_form = ReservationForm()
-            return render(
-                request, self.template_name, 
-                {'customer_form': customer_form, 'reservation_form': reservation_form}
-                )
+
         else:
             customer_form = CustomerForm()
             reservation_form = ReservationForm()
-            return render(
-                request, self.template_name, 
-                {'customer_form': customer_form, 'reservation_form': reservation_form}
-            )
 
-        logger.warning("Get request")
-        
-        return render(
-            request, self.template_name,  
-        )
+        return render(request, "reservations.html",
+                      {'customer_form': customer_form,
+                       'reservation_form': reservation_form})
+
 
     def post(self, request, User=User, *args, **kwargs):
         customer_form = CustomerForm(data=request.POST)
