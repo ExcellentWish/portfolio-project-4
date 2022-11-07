@@ -149,22 +149,23 @@ class ReservationsEnquiry(View):
 
 
 def retrieve_reservations(self, request, User):
+    customer_email = request.user.email
     if len(Customer.objects.filter(email=customer_email)) != 0:
+        # If customer exists in model
         current_customer = Customer.objects.get(email=customer_email)
         current_customer_id = current_customer.pk
-        logger.warning(f"user = {customer_email}") 
 
-        get_reservations = Reservation.objects.filter(customer_name=current_customer_id).values().order_by('requested_date')
-        logger.warning(f"{get_reservations}")
+        # Get any reservations using the customer instance
+        get_reservations = Reservation.objects.filter(customer=current_customer_id).values().order_by('requested_date')
 
         if len(get_reservations) == 0:
-            logger.warning(f"No existing reservations.") 
-            return 1
+            # if no reservations
+            return None
         else:
             return get_reservations
     else:
-        logger.warning(f"No user in customer model") 
-        return 1        
+        # if user is not present in customer model
+        return None      
 
 
 class ManageReservations(generic.ListView):
