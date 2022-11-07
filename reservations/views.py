@@ -66,49 +66,66 @@ class ReservationsEnquiry(View):
 
 
     def post(self, request, User=User, *args, **kwargs):
+        # Get post data from forms
         customer_form = CustomerForm(data=request.POST)
         reservation_form = ReservationForm(data=request.POST)
         
-
-        # logger.warning(f"Maximum number of tables: {max_tables}")
-
-        # You must be logged in to make in a reservation enquiry
-        
         if customer_form.is_valid() and reservation_form.is_valid():
-            # Retreive information from forms 
-            customer_requested_time, customer_requested_date, customer_requested_guests, customer_name, customer_phone_number = retreive_customer_info(reservation_form, customer_form)
+            # Retreive information from forms
+            customer_requested_date = request.POST.get('requested_date')
+            customer_requested_time = request.POST.get('requested_time')
+            customer_requested_guests = request.POST.get('no_of_guests')
+            customer_name = request.POST.get('full_name')
+
+            # Convert date in to format required by django
+            date_formatted = datetime.datetime.strptime(
+                customer_requested_date, "%d/%m/%Y").strftime('%Y-%m-%d')
+
             # Check to see how many bookings exist at that time/date
-            tables_booked = check_availabilty(customer_requested_time, customer_requested_date)
-            max_tables = get_tables_info
+            tables_booked = check_availabilty(
+                customer_requested_time, date_formatted)
+
+            # Get the number of tables in the restaurant
+            max_tables = get_tables_info()
 
             # Compare number of bookings to number of tables available
-            if tables_booked == max_tables:
-
+            if tables_booked >= max_tables:
+                """ If the number of tables is bigger than or equal to the
+                max number of tables in the restaurant stop form being
+                submitted
+                """
                 messages.add_message(
-                    request, messages.ERROR, f"Unfortunately we are fully booked at {customer_requested_time} on {customer_requested_date}")
+                    request, messages.ERROR,
+                    "Unfortunately we are fully booked at "
+                    f"{customer_requested_time} on {customer_requested_date}.")
 
-                return render(
-                request, 'reservations.html', 
-                {'customer_form': customer_form, 'reservation_form': reservation_form}
-                )   
+                return render(request, 'reservations.html',
+                              {'customer_form': customer_form,
+                               'reservation_form': reservation_form})
             else:
-                # Prevent duplicate 'customers' being added to databas
-                customer_email = customer_form.cleaned_data['email']
-                customer_query = len(Customer.objects.filter(email=customer_email))
+                customer_email = request.POST.get('email')
+                # See if customer already exists in model
+                customer_query = len(Customer.objects.filter(
+                    email=customer_email))
 
+                # Prevent duplicate 'customers' being added to database
                 if customer_query > 0:
-                    logger.warning("customer exists")
                     pass
                 else:
                     customer_form.save()
-                # Retreive customer information pass to reservation model
-                current_customer = get_customer_instance(request, User)
+
+                # Retreive customer information to pass to reservation model
+                current_customer = Customer.objects.get(
+                    email=customer_email)
                 current_customer_id = current_customer.pk
-                customer = Customer.objects.get(customer_id=current_customer_id)
-                logger.warning(f"Customer ID is: {current_customer_id}")
-                logger.warning(f"{customer}")
+                customer = Customer.objects.get(
+                    customer_id=current_customer_id)
+
                 reservation = reservation_form.save(commit=False)
-                reservation.customer_name = customer
+                # Pass formatted date & customer in to model
+                reservation.requested_date = date_formatted
+                reservation.customer = customer
+                # Save reservation
                 reservation_form.save()    
         
                 messages.add_message(
@@ -116,17 +133,19 @@ class ReservationsEnquiry(View):
                     request, messages.SUCCESS, f"Thank you {customer_name}, your enquiry for {customer_requested_time} on {customer_requested_date} has been sent."
                     )
                 # Return blank forms so the same enquiry isn't sent twice.
-                customer_form = CustomerForm()
-                reservation_form = ReservationForm()    
+                url = reverse('reservations')
+                return HttpResponseRedirect(url)    
 
-                return render(request, 'reservations.html', {'customer_form': customer_form, 'reservation_form': reservation_form})
         else:
-            messages.add_message(request, messages.ERROR, "Something is not right with your form")
+            messages.add_message(
+                request, messages.ERROR,
+                "Something is not right with your form "
+                "- please make sure your email address & phone number in the"
+                " correct format.")
 
-        return render(
-            request, 'reservations.html', 
-            {'customer_form': customer_form, 'reservation_form': reservation_form}
-        )
+        return render(request, 'reservations.html',
+                      {'customer_form': customer_form,
+                       'reservation_form': reservation_form})
 
 
 def retrieve_reservations(self, request, User):
