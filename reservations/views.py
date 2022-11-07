@@ -269,44 +269,52 @@ class EditReservation(View):
         return render(request, 'edit_reservation.html', {'reservation_form': reservation_form, 'customer_form': customer_form, 'reservation': reservation })
 
 class DeleteReservation(View):
-    # View for user to delete reservations
+    #View for user to delete reservations
     def get(self, request, reservation_id, User=User, *args, **kwargs):
-        reservation = get_object_or_404(Reservation, reservation_id=reservation_id)
-        customer = get_customer_instance(request, User)
+        if request.user.is_authenticated:
+            reservation = get_object_or_404(Reservation, reservation_id=reservation_id)
+            customer = get_customer_instance(request, User)
+            # Prevent customers editing expired reservations
+            today = datetime.datetime.now().date()
+            if reservation.requested_date < today:
+                messages.add_message(request, messages.ERROR, "You are trying to edit a reservation that is in the past.")
+                url = reverse('manage_reservations')
+                return HttpResponseRedirect(url)
+            else:
+                # Compare names of reservation owner and user
+                reservation_owner = reservation.customer
+                name_of_user = customer
 
-        name1 = reservation.customer_name
-        name2 = customer
-        logger.warning(name1)
-        logger.warning(name2)
+                if reservation_owner != name_of_user:
+                    # If the names do not match redirect to manage reservations
+                    messages.add_message(request, messages.ERROR,"You are trying to cancel a reservation that is not yours.")
+                    url = reverse('manage_reservations')
+                    return HttpResponseRedirect(url)
 
-        if name1 != name2:
-            messages.add_message(request, messages.ERROR, "You are trying to delete a reservation that is not yours.")
-            url = reverse('manage_reservations')
+                else:
+                    return render(request, 'delete_reservation.html',
+                                  {'customer': customer,
+                                   'reservation': reservation,
+                                   'reservation_id': reservation_id})
+        else:
+            # Prevent users not logged in from accessing this page
+            messages.add_message(request, messages.ERROR, "You must be logged in to manage your reservations.")
+            url = reverse('reservations')
             return HttpResponseRedirect(url)
 
-        else:
-            return render(request, 'delete_reservation.html',
-            {'customer': customer,
-            'reservation': reservation,
-            'reservation_id': reservation_id 
-            })
-
     def post(self, request, reservation_id, User=User, *args, **kwargs):
-        customer = get_customer_instance(request, User)
         # get reservation from database
         reservation_id = reservation_id
         reservation = Reservation.objects.get(pk=reservation_id)
-        logger.warning(f"{reservation}")
         # Delete the reservation
         reservation.delete()
-        messages.add_message(request, messages.SUCCESS, "Your reservation has now been deleted.")
+        messages.add_message(request, messages.SUCCESS,f"Reservation {reservation_id} has now been cancelled.")
         # Get updated list of reservations
         current_reservations = retrieve_reservations(self, request, User)
-        return render(
-                request, 'manage_reservations.html', 
-                {'reservations': current_reservations,
-                'customer': customer})
-        # Return user to manage reservations page  
+        # Return user to manage reservations page
+        validate_date(self, request, current_reservations)
+        return render(request, 'manage_reservations.html',
+                      {'reservations': current_reservations})
         
               
 class EditCustomerDetails(View):
