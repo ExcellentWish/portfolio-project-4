@@ -75,7 +75,7 @@ class ContactPage(View):
             messages.add_message(
                 request, messages.ERROR,
                 "Something is not right with your form - please make sure your"
-                "email address is entered in the correct format.")
+                " email address is entered in the correct format.")
 
         return render(
             request, 'contact_us.html', {'contact_form': contact_form})

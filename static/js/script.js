@@ -1,6 +1,8 @@
-$(document).ready(function() {
+$(document).ready(function () {
     console.log('Working')
-    $("#id_requested_date").datepicker({ dateFormat: 'dd/mm/yy' });
+    $("#id_requested_date").datepicker({
+        dateFormat: 'dd/mm/yy'
+    });
 
     // Prevents dates in the past from being submitted on the reservation form
 
@@ -19,7 +21,16 @@ $(document).ready(function() {
         }))
     }
     checkDate()
-    
+
+    // If there is a form error, shake the form 
+    function formError() {
+        if ($(".alert.alert-danger").length) {
+            $("#full-form").addClass("animate__animated animate__shakeX");
+        }
+    }
+
+    formError()
+
     function screenSize() {
         if (window.innerWidth < 994) {
             $('#map').addClass('hidden');
@@ -43,13 +54,13 @@ $(document).ready(function() {
             if (callNow) func.apply(context, args);
         };
     }
-    
+
     var screenChangeEfficient = debounce(function () {
         screenSize();
     }, 150);
 
 
     window.addEventListener('resize', screenChangeEfficient);
-    
+
     screenSize();
 });
