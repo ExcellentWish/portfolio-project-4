@@ -45,6 +45,14 @@ body {
   background-size: cover;
 }
 
+
+#main-heading{
+    background-color: rgba(100, 180, 172, 0.5);
+    width: 200px;
+    margin: auto;
+    border-radius: 15px;
+}
+
 /* Reservations page */
 
 #full-form {
