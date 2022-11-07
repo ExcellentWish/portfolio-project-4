@@ -1,12 +1,10 @@
-from django.shortcuts import render, get_object_or_404, reverse
-from django.views import generic, View
+from django.shortcuts import render, reverse, get_object_or_404
+from django.views import View
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from .models import Table, Customer, Reservation
 from .forms import CustomerForm, ReservationForm
-# from django.template.context_processors import csrf
 from django.contrib.auth.models import User
-# from django.contrib.auth.decorators import login_required
 import datetime
 import logging
 
@@ -40,7 +38,7 @@ def get_customer_instance(request, User):
 
 def get_tables_info():
     # Retrieves the number of tables in the table model
-    max_tables = Table.objects.all().count
+    max_tables = len(Table.objects.all())
 
     return max_tables
 
@@ -82,12 +80,9 @@ class ReservationsEnquiry(View):
                 customer_requested_date, "%d/%m/%Y").strftime('%Y-%m-%d')
 
             # Check to see how many bookings exist at that time/date
-            tables_booked = check_availabilty(
-                customer_requested_time, date_formatted)
+            tables_booked = check_availabilty(customer_requested_time, date_formatted)
 
-            # Get the number of tables in the restaurant
             max_tables = get_tables_info()
-
             # Compare number of bookings to number of tables available
             if tables_booked >= max_tables:
                 """ If the number of tables is bigger than or equal to the
@@ -115,8 +110,7 @@ class ReservationsEnquiry(View):
                     customer_form.save()
 
                 # Retreive customer information to pass to reservation model
-                current_customer = Customer.objects.get(
-                    email=customer_email)
+                current_customer = Customer.objects.get(email=customer_email)
                 current_customer_id = current_customer.pk
                 customer = Customer.objects.get(
                     customer_id=current_customer_id)
@@ -129,7 +123,6 @@ class ReservationsEnquiry(View):
                 reservation_form.save()    
         
                 messages.add_message(
-
                     request, messages.SUCCESS, f"Thank you {customer_name}, your enquiry for {customer_requested_time} on {customer_requested_date} has been sent."
                     )
                 # Return blank forms so the same enquiry isn't sent twice.
@@ -176,7 +169,7 @@ def validate_date(self, request, reservations):
 
         return reservations
 
-class ManageReservations(generic.ListView):
+class ManageReservations(View):
     # View for user to manage any existing reservations
     def get(self, request, User=User, *args, **kwargs):
         if request.user.is_authenticated:
@@ -188,23 +181,17 @@ class ManageReservations(generic.ListView):
                 messages.add_message(request, messages.WARNING, "Ooops, you've not got any existing reservations. You can make reservations here.")
                 url = reverse('reservations')
                 return HttpResponseRedirect(url)
-            # If the user does not exist in the customer model 
-            elif current_reservations == 1:
-                messages.add_message(request, messages.WARNING, "Ooops, you've never made a reservation enquiry. You can make reservations here.")
-                url = reverse('reservations')
-                return HttpResponseRedirect(url)
 
             else:
-                pass
-                return render(
-                    request, 'manage_reservations.html', 
-                    {'reservations': current_reservations,
-                    'customer': customer})
+                validate_date(self, request, current_reservations)
+                return render( request, 'manage_reservations.html', {'reservations': current_reservations, 'customer': customer})
+            # If the user does not exist in the customer model 
         else:
-            messages.add_message(
-                request, messages.ERROR, "You must be logged in to manage your reservations.")
+        # Prevent users not logged in from accessing this page
+            messages.add_message(request, messages.ERROR, "You must be logged in to manage your reservations.")
 
-        return render(request, 'manage_reservations.html')
+            url = reverse('reservations')
+            return HttpResponseRedirect(url)
 
 class EditReservation(View):
     # View for user to be able to edit their existing reservations
