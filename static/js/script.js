@@ -31,6 +31,17 @@ $(document).ready(function () {
 
     formError()
 
+    function deleteModal() {
+        $("#delete-reservation").on('click', function () {
+            $('#confirmationModal').modal('show');
+        });
+    
+        $(".close").on('click', function () {
+            $('#confirmationModal').modal('hide');
+        });
+    }
+    deleteModal()
+    
     function screenSize() {
         if (window.innerWidth < 994) {
             $('#map').addClass('hidden');
