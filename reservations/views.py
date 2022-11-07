@@ -168,6 +168,14 @@ def retrieve_reservations(self, request, User):
         return None      
 
 
+def validate_date(self, request, reservations):
+    today = datetime.datetime.now().date()
+    for reservation in reservations:
+        if reservation['requested_date'] < today:
+            reservation['status'] = 'expired'
+
+        return reservations
+
 class ManageReservations(generic.ListView):
     # View for user to manage any existing reservations
     def get(self, request, User=User, *args, **kwargs):
@@ -176,7 +184,7 @@ class ManageReservations(generic.ListView):
             model = Reservation
             current_reservations = retrieve_reservations(self, request, User)
             # If the user has no reservations
-            if current_reservations == 0:
+            if current_reservations is None:
                 messages.add_message(request, messages.WARNING, "Ooops, you've not got any existing reservations. You can make reservations here.")
                 url = reverse('reservations')
                 return HttpResponseRedirect(url)
