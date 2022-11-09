@@ -43,6 +43,8 @@ body {
   background-attachment: scroll;
   background-position: center center;
   background-size: cover;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 
 
@@ -128,6 +130,8 @@ textarea#id_message.textarea {
 footer {
   background-color: #e8575d;
   font-family: 'Roboto', sans-serif;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 }
 
 #social-media-icons {
@@ -147,10 +151,6 @@ footer {
 
 #email-link {
   text-decoration: none;
-}
-
-.footer-copyright {
-  border: solid 1px white
 }
 
 footer .g-maplink{
