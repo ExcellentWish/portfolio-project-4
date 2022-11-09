@@ -57,16 +57,16 @@ body {
 
 /* Reservations page */
 
-#full-form {
+.full-form {
   list-style: none;
 }
 
-#full-form li label,
-#full-form label {
+.full-form li label,
+.full-form label {
   margin-left: 30px;
 }
 
-#full-form li {
+.full-form li {
   padding: 5px;
   margin-bottom: 20px;
 }
@@ -300,23 +300,23 @@ a.icons::after {
   }
 
   /**reservation form **/
-  #full-form {
+  .full-form {
     padding-left: 0px;
   }
 
-  #full-form li label,
-  #full-form label {
+  .full-form li label,
+  .full-form label {
     margin-left: 0px;
     padding-bottom: 2px;
 
   }
 
-  #full-form input,
+  .full-form input,
     {
     width: 260px;
   }
 
-  #full-form li select {
+  .full-form li select {
     width: 260px;
   }
 

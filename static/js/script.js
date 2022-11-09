@@ -30,25 +30,6 @@ $(document).ready(function () {
     }
 
     formError()
-
-    // Hide the email input on 'Update Details' page, using opacity to prevent errors once the form is submitted
-    function disableEmail() {
-        $(".customer-details-form>li:nth-child(3)").css({"opacity": 0, "margin": "-20px"})
-    }
-
-    disableEmail()
-
-    // Remove disabled attribute so that the form can be submitted without throwing errors
-    function removeDisableAttrOnSubmit() {
-        $(".customer-details-form").one('submit', (function (e) {
-            e.preventDefault();
-            var $this = $(this);
-            $(".customer-details-form>#full-form>#div_id_email>.controls>.emailinput").attr("disabled", false);
-            $this.submit();
-        }));
-    }
-    removeDisableAttrOnSubmit()
-
     // Opens the modal on delete_reservation
     function deleteModal() {
         $("#delete-reservation").on('click', function () {
