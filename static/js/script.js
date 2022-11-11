@@ -33,7 +33,7 @@ $(document).ready(function () {
 
     // // Hide the email input on 'Update Details' page
     function disableEmail() {
-        $("#customer-details-form>#div_id_email>.controls>.emailinput").attr("disabled", true);
+        $("#customer-details-form>#div_id_email>.emailinput").attr("disabled", true);
     }
     disableEmail()
     // Remove disabled attribute so that the form can be submitted without throwing errors
@@ -41,7 +41,7 @@ $(document).ready(function () {
         $("#customer-details-form").one('submit', (function (e) {
             e.preventDefault();
             var $this = $(this);
-            $("#customer-details-form>.full-form>#div_id_email>.controls>.emailinput").attr("disabled", false);
+            $("#customer-details-form>.full-form>#div_id_email>.emailinput").attr("disabled", false);
             $this.submit();
         }));
     }
