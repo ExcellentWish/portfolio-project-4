@@ -320,18 +320,26 @@ class DeleteReservation(View):
 class EditCustomerDetails(View):
     # View for user to be able to edit their information
     def get(self, request, User=User, *args, **kwargs):
-        # Get customer object based on user
-        customer = get_customer_instance(request, User)
 
-        logger.warning(customer)
+        if request.user.is_authenticated:
+            # Get customer object based on user
+            customer = get_customer_instance(request, User)
+            if customer is None:
+                # If 'customer' does not exist return user email
+                email = request.user.email
+                customer_form = CustomerForm(initial={"email": email})
+            else:
+                # return both forms with the existing information
+                customer_form = CustomerForm(instance=customer)
 
-        # return both forms with the existing information
-        customer_form = CustomerForm(instance=customer)
-
-        return render(request, 'edit_customer_details.html', 
-        {'customer_form': customer_form,
-        'customer': customer,
-        })
+            return render(request, 'edit_customer_details.html',
+                        {'customer_form': customer_form,
+                        'customer': customer, })
+        else:
+        # If user not logged in redirect to reservations page
+            messages.add_message(request, messages.ERROR,"You must be logged in to update your details.")
+            url = reverse('reservations')
+            return HttpResponseRedirect(url)
 
     def post(self, request, User=User, *args, **kwargs):
         customer = get_customer_instance(request, User)
@@ -339,26 +347,33 @@ class EditCustomerDetails(View):
         customer_form = CustomerForm(data=request.POST, instance=customer)
 
         if customer_form.is_valid():
-            if customer_form.has_changed():
-                # get the information from the form 
-                customer_full_name = customer_form.cleaned_data['full_name']
-                customer_email = customer_form.cleaned_data['email']
-                customer_phone_number = customer_form.cleaned_data['phone_number']
+            if customer is None:
+                    customer_form.save()
+                    messages.add_message(request, messages.SUCCESS, "Your details have now been added.")
+            else:    
+                if customer_form.has_changed():
+                    # get the information from the form 
+                    customer_full_name = customer_form.cleaned_data['full_name']
+                    customer_email = customer_form.cleaned_data['email']
+                    customer_phone_number = customer_form.cleaned_data['phone_number']
 
-                customer_form.save(commit=False)
-                customer.full_name = customer_full_name
-                customer.phone_number = customer_phone_number
-                customer_form.save()
-                messages.add_message(request, messages.SUCCESS, "Your details have now been updated.")
-                url = reverse('index')
-                return HttpResponseRedirect(url)
+                    customer_form.save(commit=False)
+                    # Update customer instance with new information
+                    customer.full_name = customer_full_name
+                    customer.phone_number = customer_phone_number
+                    customer_form.save()
+                    messages.add_message(request, messages.SUCCESS, "Your details have now been updated.")
+                    
+                    return render(request, 'edit_customer_details.html',
+                                {'customer_form': customer_form,
+                                'customer': customer, })
 
-            else:
-                messages.add_message(request, messages.WARNING, "No information has changed.")
-                return render(request, 'edit_customer_details.html', 
-                {'customer_form': customer_form,
-                'customer': customer,
-                })
+                else:
+                    messages.add_message(request, messages.WARNING, "No information has changed.")
+                    return render(request, 'edit_customer_details.html', 
+                    {'customer_form': customer_form,
+                    'customer': customer,
+                    })
         else:
             messages.add_message(request, messages.ERROR, "Something is not right with your form - please make sure your email address & phone number are entered in the correct format.")
 
