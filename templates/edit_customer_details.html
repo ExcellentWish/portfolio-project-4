@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+{% load crispy_forms_tags %}
 <div class="container">
     <div class="row d-flex justify-content-center">
 
@@ -16,19 +18,19 @@
         <div class="col-sm-6">
 
             <!-- Reservation form -->
-            <form method="POST" class="mb-5" >
-                <ul id="customer-details-form" class="full-form">
+            <form method="POST" class="mb-5 full-form" id="customer-details-form">
+                
 
                     {% csrf_token %}
 
                     <!-- Customer form -->
 
-                    {{ customer_form.as_ul }}
+                    {{ customer_form | crispy }}
 
                     <button type="submit" class="button mt-4 text-center submit-button">Edit
                         Details</button>
 
-                </ul>
+                
             </form>
         </div>
     </div>

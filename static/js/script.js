@@ -32,23 +32,20 @@ $(document).ready(function () {
     formError()
 
     // // Hide the email input on 'Update Details' page
-    // function hideEmail() {
-    //     $("#customer-details-form>.full-form>#div_id_email>.controls>.emailinput").attr("disabled", true);
-    // }
-
-    // hideEmail()
-
-    // // Remove disabled attribute so that the form can be submitted without throwing errors
-    // function removeDisableAttrOnSubmit() {
-    //     $("#customer-details-form").one('submit', (function (e) {
-    //         e.preventDefault();
-    //         var $this = $(this);
-    //         console.log("function called")
-    //         $("#customer-details-form>.full-form>#div_id_email>.controls>.emailinput").attr("disabled", false)
-    //         $this.submit();
-    //     }))
-    // };
-    // removeDisableAttrOnSubmit()
+    function disableEmail() {
+        $("#customer-details-form>#div_id_email>.controls>.emailinput").attr("disabled", true);
+    }
+    disableEmail()
+    // Remove disabled attribute so that the form can be submitted without throwing errors
+    function removeDisableAttrOnSubmit() {
+        $("#customer-details-form").one('submit', (function (e) {
+            e.preventDefault();
+            var $this = $(this);
+            $("#customer-details-form>.full-form>#div_id_email>.controls>.emailinput").attr("disabled", false);
+            $this.submit();
+        }));
+    }
+    removeDisableAttrOnSubmit()
 
     // Opens the modal on delete_reservation
     function deleteModal() {
