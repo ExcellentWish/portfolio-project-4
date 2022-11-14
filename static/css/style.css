@@ -121,6 +121,12 @@ textarea#id_message.textarea {
 }
 
 .pending {
+  background-color: #02105c;
+  color: #Effbed;
+  padding: 2px;
+}
+
+.rejected{
   background-color: #9D0208;
   color: #Effbed;
   padding: 2px;
