@@ -201,7 +201,7 @@ class EditReservation(View):
         customer = get_customer_instance(request, User)
         logger.warning(reservation)
         logger.warning(customer)
-        name1 = reservation.customer_name
+        name1 = reservation.customer
         name2 = customer
 
         logger.warning(name1)
