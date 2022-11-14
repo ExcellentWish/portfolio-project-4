@@ -112,5 +112,5 @@ $(document).ready(function () {
     }
     
     window.initMap = initMap;
-    
+    initMap()
 });
