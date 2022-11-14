@@ -9,13 +9,16 @@ This is a full-stack frameworks project built using Django, Python, HTML, CSS an
   - [User Experience](#user-experience)
   - [Scope](#scope)
   - [Structure](#structure)
+    - [Databases](#databases)
+      - [Menus](#menus)
+      - [Reservations](#reservations)
   - [Skeleton](#skeleton)
   - [Surface](#surface)
   - [Features](#features)
     - [Current Features](#current-features)
       - [Home page](#home-page)
       - [Menus - Food \& Drinks](#menus---food--drinks)
-      - [Reservations](#reservations)
+      - [Reservations](#reservations-1)
       - [Contact Form](#contact-form)
   - [Technology Used](#technology-used)
   - [Testing](#testing)
@@ -43,11 +46,29 @@ In order to acheuve the desired user & business goals the following features wil
 - Landing page with brief information about the restaurant and links to the menu and reservations page
 - Menus page, with links to food & drinks menu respectively
 - Reservations page, with booking form to enquire with the restaurant
-- Register/login feature
-- Contact form
+- Register/login feature using Django allauth
+- Contact form using Google SMTP
 
 ## Structure
 This website has been designed with simplicity in mind, each page only have entirely relevant information on it so that the user is able to find what they want quickly without having to read through unnessecary things. I have seperated out each key feature to really highlight their functionality to the user.
+
+The website is made of three apps:
+1. Website - core functionality
+2. Menus - menu display
+3. Reservations - reservations enquiries & customer management
+
+### Databases
+The menus and reservations app both require databases to store information so I have built custom models.
+
+#### Menus
+FoodItem & DrinksItem are the model names for the menus app, these are two standalone models that provide all of the information required to display the items as part of the restaurant's menu. Each item has a name, description, price, dietary
+
+#### Reservations
+There are 3 models in this app, Customer, Table & Reservation. The combination of these 3 models allow for customer details to be stored, reservation enquiries to be made & managed & also enable availability checks whilst the user is enquiring.
+
+For each reservation, there will be a customer & table assigned to it. The customer is assigned during the enquiry process and the tables are assigned in the backend by the admin user. This works for users that are logged in and also those that aren't. Logged in users will have their details associated with the user email address as this is how they are located in the customer model.
+
+The tables model is also used to determine what the availability of the restaurant is like and this logic prevents bookings from being made if there are no tables available at the specified date and time.
 
 Database scheme for the menus
 
