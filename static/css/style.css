@@ -96,10 +96,17 @@ li select,
   transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
+/**Crispy forms**/
 input#id_name.textinput.textInput,
 input#id_email.emailinput,
-textarea#id_message.textarea {
+textarea#id_message.textarea,
+input#id_full_name.textinput.textInput,
+input#id_phone_number.textinput.textInput,
+select#id_no_of_guests,
+select#id_requested_time,
+input#id_requested_date {
   width: 100%;
+  margin-bottom: 10px;
 }
 
 /**Date picker **/

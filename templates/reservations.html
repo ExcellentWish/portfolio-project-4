@@ -2,6 +2,8 @@
 
 {% block content %}
 {% load static %}
+{% load crispy_forms_tags %}
+
 <div class="container">
     <div class="row d-flex justify-content-center">
         <div class="col-sm-8">
@@ -26,9 +28,9 @@
                     {{ reservation_form.non_field_errors }}
 
                     <!-- Customer form -->
-                    {{ customer_form.as_ul }}
+                    {{ customer_form | crispy }}
                     <!-- Reservation form -->
-                    {{ reservation_form.as_ul }}
+                    {{ reservation_form | crispy }}
 
                     <button type="submit" class="button btn-outline-success mt-4 text-center submit-button">Send
                         enquiry</button>
