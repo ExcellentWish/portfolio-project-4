@@ -74,6 +74,8 @@ Database scheme for the menus
 
 ![here](assets/documents/images/menu-scheme.png)
 
+![here](assets/documents/images/database_reservations.jpg)
+
 ## Skeleton
 [Wireframes can be viewed here](assets/documents/wireframes/WIREFRAMES.md)
 
