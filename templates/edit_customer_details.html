@@ -8,8 +8,11 @@
 
         <div class="col-sm-8 text-center">
             <h2 class="text-center mt-2 mb-3">Edit your details at Bottega Pia</h2>
-            <p>Please note as your email is associated with your User account this must be changed <a href="{% url 'account_email' %}">here</a>.
+            <p>Please note as your email is associated with your User account this must be changed <a
+                    href="{% url 'account_email' %}">here</a>.
             </p>
+            <p>If you change your accounts email address you will only be able to view reservations made with your
+                'Primary' email address.</p>
         </div>
     </div>
 
@@ -19,18 +22,18 @@
 
             <!-- Reservation form -->
             <form method="POST" class="mb-5 full-form" id="customer-details-form">
-                
 
-                    {% csrf_token %}
 
-                    <!-- Customer form -->
+                {% csrf_token %}
 
-                    {{ customer_form | crispy }}
+                <!-- Customer form -->
 
-                    <button type="submit" class="button mt-4 text-center submit-button">Edit
-                        Details</button>
+                {{ customer_form | crispy }}
 
-                
+                <button type="submit" class="button mt-4 text-center submit-button">Edit
+                    Details</button>
+
+
             </form>
         </div>
     </div>
