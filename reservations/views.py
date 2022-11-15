@@ -183,9 +183,12 @@ class ManageReservations(View):
                 return HttpResponseRedirect(url)
 
             else:
-                validate_date(self, request, current_reservations)
-                return render( request, 'manage_reservations.html', {'reservations': current_reservations, 'customer': customer})
-            # If the user does not exist in the customer model 
+                today = datetime.datetime.now().date()
+                for reservation in current_reservations:
+                    if reservation['requested_date'] < today:
+                        reservation['status'] = 'expired'
+                    return render( request, 'manage_reservations.html', {'reservations': current_reservations, 'customer': customer})
+                
         else:
         # Prevent users not logged in from accessing this page
             messages.add_message(request, messages.ERROR, "You must be logged in to manage your reservations.")
@@ -198,6 +201,17 @@ class EditReservation(View):
     def get(self, request, reservation_id, User=User, *args, **kwargs):
         # Get reservation object based on id
         reservation = get_object_or_404(Reservation, reservation_id=reservation_id)
+        today = datetime.datetime.now().date()
+        if reservation.requested_date < today:
+            messages.add_message(request, messages.ERROR, "You are trying to edit a reservation that is in the past.")
+            url = reverse('manage_reservations')
+            return HttpResponseRedirect(url)
+
+        elif reservation.status == 'rejected':
+            messages.add_message(request, messages.ERROR, "You are trying to edit a reservation that has been rejected.")
+            url = reverse('manage_reservations')
+            return HttpResponseRedirect(url)
+
         customer = get_customer_instance(request, User)
         logger.warning(reservation)
         logger.warning(customer)
@@ -277,7 +291,8 @@ class DeleteReservation(View):
             # Prevent customers editing expired reservations
             today = datetime.datetime.now().date()
             if reservation.requested_date < today: 
-                messages.add_message(request, messages.ERROR, "You are trying to edit a reservation that is in the past.")
+                messages.add_message(request, messages.SUCCESS, "You have deleted a reservation that is in the past.")
+                reservation.delete()
                 url = reverse('manage_reservations')
                 return HttpResponseRedirect(url)
             else:
