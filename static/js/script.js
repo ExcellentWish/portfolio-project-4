@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    console.log('Working')
+    console.log('Working');
     $("#id_requested_date").datepicker({
         dateFormat: 'dd/mm/yy'
     });
@@ -9,18 +9,18 @@ $(document).ready(function () {
     function checkDate() {
         $("#reservation-enquiry").one('submit', (function (e) {
             e.preventDefault();
-            var $this = $(this)
+            var $this = $(this);
             var selectedDate = $('#id_requested_date').datepicker('getDate');
-            console.log(selectedDate)
+            console.log(selectedDate);
             if ((selectedDate.getTime() < Date.now())) {
                 alert("Selected date is in the past, please choose a date in the future.");
             } else {
                 console.log("Selected date is NOT in the past");
                 $this.submit();
             }
-        }))
+        }));
     }
-    checkDate()
+    checkDate();
 
     // If there is a form error, shake the form 
     function formError() {
@@ -29,13 +29,13 @@ $(document).ready(function () {
         }
     }
 
-    formError()
+    formError();
 
     // // Hide the email input on 'Update Details' page
     function disableEmail() {
         $("#customer-details-form>#div_id_email>.controls>.emailinput").attr("disabled", true);
     }
-    disableEmail()
+    disableEmail();
     // Remove disabled attribute so that the form can be submitted without throwing errors
     function removeDisableAttrOnSubmit() {
         $("#customer-details-form").one('submit', (function (e) {
@@ -45,7 +45,7 @@ $(document).ready(function () {
             $this.submit();
         }));
     }
-    removeDisableAttrOnSubmit()
+    removeDisableAttrOnSubmit();
 
     // Opens the modal on delete_reservation
     function deleteModal() {
@@ -57,7 +57,7 @@ $(document).ready(function () {
             $('#confirmationModal').modal('hide');
         });
     }
-    deleteModal()
+    deleteModal();
 
     function screenSize() {
         if (window.innerWidth < 994) {
@@ -96,8 +96,8 @@ $(document).ready(function () {
     function initMap() {
         // The location of Bottega Pia 41.7312638,12.6584794
         const bottega = {
-            lat: 41.7312638,
-            lng: 12.6584794
+          lat: 41.7312638,
+          lng: 12.6584794
         };
         // The map, centered at Bottega Pia
         const map = new google.maps.Map(document.getElementById("map"), {
@@ -112,5 +112,5 @@ $(document).ready(function () {
     }
     
     window.initMap = initMap;
-    initMap()
+    initMap();
 });
