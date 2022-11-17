@@ -69,7 +69,15 @@ body {
     margin: auto;
     border-radius: 15px;
 }
-
+/** message alerts**/
+.alert-success{
+  background-color: #358d84cb;
+  color: #fff;
+}
+.alert-info{
+  background-color: #358d84cb;
+  color: #fff;
+}
 /* Reservations page */
 
 .full-form {
@@ -130,7 +138,7 @@ input#id_requested_date {
 }
 
 .ui-widget-header {
-  background: #64b4ac80;
+  background: #358d84cb;
   color: #fff;
 }
 
