@@ -18,7 +18,7 @@ This is a full-stack frameworks project built using Django, Python, HTML, CSS an
   - [Surface](#surface)
   - [Features](#features)
     - [Current Features](#current-features)
-      - [Home page](#home-page)
+    - [Home page](#home-page)
       - [Menus - Food \& Drinks](#menus---food--drinks)
       - [Reservations](#reservations-1)
       - [Contact Form](#contact-form)
@@ -114,31 +114,58 @@ Database scheme for the menus
 The theme of simplicity follows through to the design, I've used bootstrap columns and rows to divide the pages and tried to keep the same layout throughout so that the user has a sense of ease when on the various pages. 
 
 ## Surface
-The colour pallete I have chosen for this website are from [coolers.co](https://coolors.co/5d737e-fdf7f7-64b6ac-e85d75-c76d7e). I like it because it has the Italian flag colours in it. I wanted a 'clean' feel and based it on greens to keep in theme with Italy. Italy will have a huge role in the design of the restaurant and the menu so I wanted there to be consistency.
+Initially, the colour pallete I have chosen for this website are from [coolers.co](https://coolors.co/5d737e-fdf7f7-64b6ac-e85d75-c76d7e).
 
 ![](assets/documents/images/bottega-theme.png)
+
+I like it because it has the Italian flag colours in it. I wanted a 'clean' feel and based it on greens to keep in theme with Italy. Italy will have a huge role in the design of the restaurant and the menu so I wanted there to be consistency.
+
+However during the development decided to go with a darker green for better contrast though out the page.
+![](assets/images/greenchange.jpg)
+
 
 I chose the fonts Exo and Roboto I wanted a bold/statement font to use for headings which is why I chose 'Exo' and then 'Roboto' for the general content as it's easier to read for the user.
 
 ## Features
 
 ### Current Features
+### Home page
+**Navigation bar**: The navigation bar has links to all the active pages for the user and are clearly labelled, the menus option has a dropdown link to take the user to the Food or Drink menu. The page that the user is on has an 'active' style, the background changes to white and the text turns green to indicate to the user which page they're on. The same style change also happens when a nav link is hovered on to again clearly indicate to the user what they are about to click on. 
 
-#### Home page
-- **Navigation bar**: The navigation bar has links to all the active pages for the user and are clearly labelled, the menus option has a dropdown link to take the user to the food or drink menu. If the user is logged in then 'Logout' will appear otehrwsie the user will be given the option to 'Register' or 'Login'/ 
-- **Menus image with link**: This image is clickable and will take the user to the menus page.
-- **Reservations image with link**: This image is clickable and will take the user to the reservations page.
-- **Footer**: The footer displays some of the restaurants key information and has links to social accounts. 
+If the user is logged in then the right side of the menu shows links for pages that only authorised users can visit & use, they are: 'Manage Reservations', 'Update Details' & 'Logout'. Otherwise, the user will be given the option to 'Register' or 'Login'. This change in the menu ensures users are directed to pages they can use, preventing any frustration and also prompting the user to sign up for an account. Furthermore, it makes it abundantly clear what the logged-in status is to the user. 
+![](assets/images/index.jpg) 
+
+The navigation bar is fully responsive and collapses on mobile screens to a hamburger icon, this easily allows the user to continue to use the navigation links without the need to press back on the browser.
+
+![](assets/images/mobileIndex.jpg)
+
+- **Menus and Reservations images with link**: These images and titles are both clickable and will take the user to the menus or reservations page.
+  
+![](assets/images/linksImages.jpg)
+
+- **Footer**: The footer displays some of the restaurants key information and has links to social media(There is no social pages for the resturant). It is split into three sections, 'Opening Times', 'Find us! & 'Keep in touch'.
+  
+![](assets/images/footer.jpg)
+
+I felt that having all three sections displayed on a mobile screen made the footer too long so I chose to hide the map using a JavaScript function
+![](assets/images/mobileFooter.jpg)
 
 #### Menus - Food & Drinks
-- **Seperate menus**: Each page displays all sections of the menus seperately, each menu item has the Dish/Drink name, dish/drink description, price, dietary information & any allergens. 
+![](assets/images/menuPage.jpg)
+
+- **Seperate menus**: Each page displays all sections of the menus seperately, each menu item has the Dish/Drink name, dish/drink description, price, dietary information & any allergens. The menus are controlled by the admin user, if 'on menu' is selected in the admin panel then the item will be displayed.
+
+I have chosen to display the menus on different pages so that the user is able to find the information they want as easily as possible, this separation prevents information overload as the pages aren't full of multiple menus.
+![](assets/images/drinkMenu.jpg) ![](assets/images/foodMenu.jpg)
 
 #### Reservations
-- **Reservation form**: This page consists of the customer & reservation model forms, they are displayed together to appear as one. If the user is logged in then their name & email address are pre-populated.
+- **Reservation form**: This page consists of the customer & reservation model forms, they are displayed together to appear as one to make it simple for the user.
+
+If the user is logged in and they exist in the customer model then their name & email address are pre-populated, this has been done in an effort to improve their overall experience.
 
 #### Contact Form
 - **Contact form**:
-
+    ![](assets/testing/ContactUs.PNG)
 
 
 ## Technology Used
@@ -184,8 +211,8 @@ I have used several technologies that have enabled this design to work:
     - Used to generate responsive image used in README file.
 
 ## Testing
-Testing Document is found [here](https://docs.google.com/spreadsheets/d/15nLGvvOe-gkxcLGmvUc7a_84_5jA6UGyUBGgMEQ42Fg/edit#gid=0)
-
+Testing  is found [here](https://docs.google.com/spreadsheets/d/15nLGvvOe-gkxcLGmvUc7a_84_5jA6UGyUBGgMEQ42Fg/edit#gid=0)
+Testing document is found [here](TESTING.md)
 ## Deployment
 To deploy my django application, I used [Code Institute Full Template](https://github.com/Code-Institute-Org/gitpod-full-template)
 - Click the `Use This Template` button.
