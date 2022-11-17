@@ -62,7 +62,11 @@ class Reservation(models.Model):
         (1, "1 person"),
         (2, "2 people"),
         (3, "3 people"),
-        (4, "4 people"))
+        (4, "4 people"),
+        (5, "5 people"),
+        (6, "6 people"),
+        (7, "7 people"),
+        (8, "8 people"))
     no_of_guests = models.IntegerField(choices=guests_choices, default=1)
     requested_date = models.DateField()
     requested_time = models.CharField(

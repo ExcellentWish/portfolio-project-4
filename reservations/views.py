@@ -320,11 +320,12 @@ class DeleteReservation(View):
             reservation = get_object_or_404(
                 Reservation, reservation_id=reservation_id)
             customer = get_customer_instance(request, User)
-            # Prevent customers editing expired reservations
+            # let customers delete expired reservations
             today = datetime.datetime.now().date()
             if reservation.requested_date < today:
+                reservation.delete()
                 messages.add_message(
-                    request, messages.ERROR, "You are trying to edit a "
+                    request, messages.ERROR, "You are have deleted a "
                     "reservation that is in the past.")
                 url = reverse('manage_reservations')
                 return HttpResponseRedirect(url)
