@@ -183,14 +183,12 @@ class ManageReservations(View):
                 return HttpResponseRedirect(url)
 
             else:
-                today = datetime.datetime.now().date()
-                for reservation in current_reservations:
-                    if reservation['requested_date'] < today:
-                        reservation['status'] = 'expired'
-                    return render(
-                        request, 'manage_reservations.html',
-                        {'reservations': current_reservations,
-                         'customer': customer})
+                validate_date(self, request, current_reservations)
+                return render(
+                    request, 'manage_reservations.html',
+                    {'reservations': current_reservations,
+                     'customer': customer})
+
         else:
             # Prevent users not logged in from accessing this page
             messages.add_message(
