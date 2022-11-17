@@ -18,6 +18,20 @@ body {
   color: #fff;
 }
 
+#main-nav a:hover{
+  color: black;
+  text-shadow: 2px 2px 4px #0f7067cb;
+}
+
+.dropdown-menu{
+  background-color: #358d84cb;
+  color: #fff;
+}
+.dropdown-item{
+  background-color: #358d84cb;
+  color: white;
+}
+
 #nav-heading {
   font-family: 'Roboto', sans-serif;
   font-size: 25px;
@@ -157,14 +171,25 @@ footer {
   text-decoration: underline 1px black;
 }
 
+.footer-heading a:hover{
+  color: white;
+  text-shadow: 2px 2px 4px #9D0208;
+  text-decoration: underline 1px white;
+}
+
 #social-media-icons {
   width: 60px;
   height: 60px;
 
 }
 
-#email-link {
+#email-link a {
+  color: black;
   text-decoration: none;
+}
+#email-link a:hover {
+  color: white;
+  text-shadow: 2px 2px 4px #9D0208;
 }
 
 footer .g-maplink{
@@ -180,13 +205,14 @@ a.g-maplink:hover {
 
 
 a.icons {
-  color: white;
+  color: black;
   letter-spacing: 4px;
   text-decoration: none;
   font-size: 36px;
 }
 
 a.icons:hover {
+  color: white;
   text-shadow: 2px 2px 4px #9D0208;
 }
 
