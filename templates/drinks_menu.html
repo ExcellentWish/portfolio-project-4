@@ -44,7 +44,7 @@
             {% for drinkitem in drinks_items.apéritif_items %}
 
             <h5> {{ drinkitem.drink_name }} </h5>
-            <p> <em> {{ drinkitem.description }} </em> | <strong>€{{ drinkitem.price}}</strong></p>
+            <p> <em> {{ drinkitem.description }} </em> | <strong>€{{ drinkitem.price | floatformat:2 }}</strong></p>
 
 
             {% endfor %}
