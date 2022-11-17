@@ -324,8 +324,7 @@ a.icons::after {
 
   }
 
-  .full-form input,
-    {
+  .full-form input{
     width: 260px;
   }
 
