@@ -24,11 +24,11 @@ class TestViews(TestCase):
     def test_contact_page_POST_sends_email(self):
         response = self.client.post(self.contact_page_url)
 
-        mail.send_mail('Subject here', 'Here is the message.',
+        mail.send_mail(
+            'Subject here', 'Here is the message.',
             'from@example.com', ['to@example.com'],
             fail_silently=False)
 
         self.assertEquals(response.status_code, 200)
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].subject, 'Subject here')
-        

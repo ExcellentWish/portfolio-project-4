@@ -8,9 +8,12 @@ from .forms import ContactForm
 from reservations.models import Customer
 
 # Create your views here.
+
+
 def index(request):
     # Return homepage
     return render(request, 'index.html')
+
 
 def send_message(request, contact_form):
     # Function to send email after contact form submitted
@@ -21,17 +24,19 @@ def send_message(request, contact_form):
     recipient_list = [settings.EMAIL_HOST_USER]
     send_mail(subject, message, email_from, recipient_list)
 
+
 def get_customer_instance(request, User):
     # Returns customer instance if User is logged in
     customer_email = request.user.email
     customer = Customer.objects.filter(email=customer_email).first()
-    return customer    
+    return customer
+
 
 class ContactPage(View):
     """
     Contact page - for a user to send a contact form.
     """
-    
+
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             customer = get_customer_instance(request, User)
@@ -52,8 +57,7 @@ class ContactPage(View):
             contact_form = ContactForm()
 
         return render(
-            request, 'contact_us.html', {'contact_form': contact_form})    
-
+            request, 'contact_us.html', {'contact_form': contact_form})
 
     def post(self, request, User=User, *args, **kwargs):
         contact_form = ContactForm(request.POST)
@@ -80,10 +84,10 @@ class ContactPage(View):
         return render(
             request, 'contact_us.html', {'contact_form': contact_form})
 
+
 def error_404(request, exception):
     return render(request, '404.html', status=404)
 
 
 def error_500(request):
     return render(request, '500.html', status=500)
-

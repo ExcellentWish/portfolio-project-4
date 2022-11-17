@@ -59,7 +59,6 @@ INSTALLED_APPS = [
     'crispy_forms',
     'menus',
     'reservations',
-    
 ]
 
 SITE_ID = 1
@@ -140,7 +139,7 @@ if os.environ.get("DEVELOPMENT") == "True":
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
-else: 
+else:
     DATABASES = {
         'default': dj_database_url.parse(os.environ.get("DATABASE_URL")),
         }
@@ -237,15 +236,22 @@ BOOTSTRAP5 = {
     # The complete URL to the Bootstrap CSS theme file (None means no theme).
     "theme_url": None,
 
-    # Put JavaScript in the HEAD section of the HTML document (only relevant if you use bootstrap5.html).
+    """Put JavaScript in the HEAD section of the HTML document (only relevant if you use bootstrap5.html)."""
     'javascript_in_head': False,
 
     # Wrapper class for non-inline fields.
-    # The default value "mb-3" is the spacing as used by Bootstrap 5 example code.
+    """
+    The default value "mb-3"
+    is the spacing as used by Bootstrap 5 example code.
+    """
     'wrapper_class': 'mb-3',
 
     # Wrapper class for inline fields.
-    # The default value is empty, as Bootstrap5 example code doesn't use a wrapper class.
+    """
+    The default value is empty,
+    as Bootstrap5 example code doesn't use a wrapper class.
+    """
+
     'inline_wrapper_class': '',
 
     # Label class to use in horizontal forms.
@@ -260,20 +266,30 @@ BOOTSTRAP5 = {
     # Set placeholder attributes to label if no placeholder is provided.
     'set_placeholder': True,
 
-    # Class to indicate required field (better to set this in your Django form).
+    '''
+    Class to indicate required field (better to set this in your Django form).
+    '''
     'required_css_class': '',
 
-    # Class to indicate field has one or more errors (better to set this in your Django form).
+    """
+    Class to indicate field has one or more errors
+    (better to set this in your Django form).
+    """
     'error_css_class': '',
 
-    # Class to indicate success, meaning the field has valid input (better to set this in your Django form).
+    """
+    Class to indicate success, meaning the field has valid input
+    (better to set this in your Django form).
+    """
     'success_css_class': '',
 
-    # Enable or disable Bootstrap 5 server side validation classes (separate from the indicator classes above).
+    """
+    Enable or disable Bootstrap 5 server side validation classes
+    (separate from the indicator classes above).
+    """
     'server_side_validation': True,
 
-    # Renderers (only set these if you have studied the source and understand the inner workings).
-    'formset_renderers':{
+    'formset_renderers': {
         'default': 'django_bootstrap5.renderers.FormsetRenderer',
     },
     'form_renderers': {

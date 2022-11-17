@@ -3,6 +3,8 @@ from django.urls import reverse, resolve
 from menus.views import menus, FoodMenu, DrinkMenu
 
 # Create your tests here
+
+
 class TestUrls(SimpleTestCase):
     def test_menus_url_is_resolved(self):
         url = reverse('menus')

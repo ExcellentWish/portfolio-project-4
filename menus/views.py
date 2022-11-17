@@ -5,8 +5,11 @@ from django.contrib import messages
 from .models import FoodItem, DrinkItem
 
 # Create your views here.
+
+
 def menus(request):
     return render(request, 'menus.html')
+
 
 class FoodMenu(generic.ListView):
     """
@@ -19,10 +22,12 @@ class FoodMenu(generic.ListView):
     def get_queryset(self):
         # Split lunch and dinner items up to display seperately.
         queryset = {
-            'lunch_items': FoodItem.objects.all().filter(on_menu=True, food_menu_section=0),
-            'dinner_items': FoodItem.objects.all().filter(on_menu=True, food_menu_section=1)
-        }
+            'lunch_items': FoodItem.objects.all().filter(
+                on_menu=True, food_menu_section=0),
+            'dinner_items': FoodItem.objects.all().filter(
+                on_menu=True, food_menu_section=1)}
         return queryset
+
 
 class DrinkMenu(generic.ListView):
     """
@@ -35,8 +40,11 @@ class DrinkMenu(generic.ListView):
     def get_queryset(self):
         # Split drinks items up to display seperately.
         queryset = {
-            'wine_items': DrinkItem.objects.all().filter(on_menu=True, drinks_menu_section=0),
-            'water_softdrinks_items': DrinkItem.objects.all().filter(on_menu=True, drinks_menu_section=1),
-            'apéritif_items': DrinkItem.objects.all().filter(on_menu=True, drinks_menu_section=2)
+            'wine_items': DrinkItem.objects.all().filter(
+                on_menu=True, drinks_menu_section=0),
+            'water_softdrinks_items': DrinkItem.objects.all().filter(
+                on_menu=True, drinks_menu_section=1),
+            'apéritif_items': DrinkItem.objects.all().filter(
+                on_menu=True, drinks_menu_section=2)
         }
         return queryset
