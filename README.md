@@ -126,14 +126,13 @@ I have used several technologies that have enabled this design to work:
 - [GitHub](https://github.com/)
     - Used to store code for the project after being pushed.
 - [Git](https://git-scm.com/)
-- Google [sheets](https://www.google.com/sheets/about/)
 - [Canva](https://www.canva.com/)
     - For image editing for readme wireframes.
 - [Cloudinary](https://cloudinary.com/)
     - For media storage
 - [Balsamiq](https://balsamiq.com/)
   - For wireframes and flow charts
-- [Pep8](http://pep8online.com/)
+- [Pycodestyle](https://pypi.org/project/pycodestyle/)
   - Used to test my code for any issues or errors.
 - [Heroku](https://www.heroku.com/)
     - For Deployment of this website

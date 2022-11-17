@@ -14,20 +14,20 @@ body {
 
 /* Navbar */
 #main-nav {
-  background-color: #64b4ac;
-  color: #Effbed;
+  background-color: #358d84cb;
+  color: #fff;
 }
 
 #nav-heading {
   font-family: 'Roboto', sans-serif;
   font-size: 25px;
-  color: #fdf7f7;
+  color: #fff;
 }
 
-.navbar-light .navbar-nav .nav-link.active,
-.navbar-light .navbar-nav .nav-link,
-.navbar-light .navbar-nav .nav-link:hover {
-  color: #fdf7f7;
+.navbar-dark .navbar-nav .nav-link.active,
+.navbar-dark .navbar-nav .nav-link,
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: #fff;
 }
 
 /* Header */
@@ -49,7 +49,8 @@ body {
 
 
 #main-heading{
-    background-color: rgba(100, 180, 172, 0.5);
+    background-color: #358d84cb;
+    color: #fff;
     width: 200px;
     margin: auto;
     border-radius: 15px;
@@ -115,7 +116,7 @@ input#id_requested_date {
 }
 
 .ui-widget-header {
-  background: #64b4ac;
+  background: #64b4ac80;
   color: #fff;
 }
 
