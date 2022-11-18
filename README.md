@@ -120,7 +120,7 @@ Initially, the colour pallete I have chosen for this website are from [coolers.c
 
 I like it because it has the Italian flag colours in it. I wanted a 'clean' feel and based it on greens to keep in theme with Italy. Italy will have a huge role in the design of the restaurant and the menu so I wanted there to be consistency.
 
-However during the development decided to go with a darker green for better contrast though out the page.
+However during the development decided to go with a darker green for better contrast throughout the page.
 ![](assets/images/greenchange.jpg)
 
 
@@ -161,7 +161,17 @@ I have chosen to display the menus on different pages so that the user is able t
 #### Reservations
 - **Reservation form**: This page consists of the customer & reservation model forms, they are displayed together to appear as one to make it simple for the user.
 
-If the user is logged in and they exist in the customer model then their name & email address are pre-populated, this has been done in an effort to improve their overall experience.
+If the user is logged in and they exist in the customer model then their name & email address are pre-populated, this has been done in an effort to improve their overall experience
+
+![](assets/images/Full-Booking.PNG)
+
+If they are not yet in the customer model then only their email address is added using the email from their user account.
+
+If the user is not logged in at all then the form appears blank, as the form requires the phone number to be entered in the +353 format I have added this placeholder to the phone number input field to try and help the user.
+
+![](assets/images/no-bookin.jpg)
+
+**Manage Reservations**:
 
 #### Contact Form
 - **Contact form**:
