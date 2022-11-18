@@ -79,6 +79,11 @@ body {
   background-color: #358d84cb;
   color: #fff;
 }
+/**Index**/
+.img-thumbnail{
+  height: 400px;
+}
+
 /* Reservations page */
 
 .full-form {

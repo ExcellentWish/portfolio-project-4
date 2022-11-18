@@ -27,9 +27,11 @@ This is a full-stack frameworks project built using Django, Python, HTML, CSS an
     - [Code Validation](#code-validation)
     - [Manual Testing](#manual-testing)
     - [Automated Testing](#automated-testing)
+    - [Bugs and Fixes](#bugs-and-fixes)
   - [Deployment](#deployment)
     - [Creating an Application with Heroku](#creating-an-application-with-heroku)
       - [Heroku](#heroku)
+      - [ElephantSQl](#elephantsql)
       - [Heroku Deployment](#heroku-deployment)
   - [Credits](#credits)
   - [Acknowledgements](#acknowledgements)
@@ -198,8 +200,6 @@ I have used several technologies that have enabled this design to work:
 - [GitHub](https://github.com/)
     - Used to store code for the project after being pushed.
 - [Git](https://git-scm.com/)
-- [Canva](https://www.canva.com/)
-    - For image editing for readme wireframes.
 - [Cloudinary](https://cloudinary.com/)
     - For media storage
 - [Balsamiq](https://balsamiq.com/)
@@ -231,6 +231,9 @@ All of my code has been validated using an online validator for specific languag
 
 - [W3C Markup Validation Service](https://validator.w3.org/) 
     - Used to validate all HTML code written and used in this webpage.
+    - ![](assets/testing/html-issue.PNG)
+    - ![](assets/testing/html-fixes.PNG)
+  
   
 - [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/#validate_by_input)
     - Used to validate all CSS code written and used in this webpage.
@@ -240,7 +243,7 @@ All of my code has been validated using an online validator for specific languag
     - Used to validate JS code
   ![](assets/testing/Javascript_errors_pp4.jpg)
   ![](assets/testing/JShint-fix.jpg)
-
+    - Some variables not showing as I used Jquery.
 ### Manual Testing
 
 I have tested this project manually myself and have also had it peer-reviewed & tested by friends and family on multiple devices and screen sizes.
@@ -259,6 +262,14 @@ To generate your own coverage report from the command line:
 3. Then `coverage html` to generate the report
 4. You can view the report in a browser by using the command `python3 -m http.server` and opening the `index.html` file from inside the `htmlcov` folder.
 
+### Bugs and Fixes
+- At various stages of my testing, upon submitting the contact form some users received a 500 error, this was due to Gmail preventing my application from logging in. I would receive an email to alert me of this login attempt and so I have had to enable these permissions a handful of times in order for it to work.
+  
+- Issue with database in bottega_pia Settings.py. When deploying to Heroku I would get 500 errors. I believe this was due to `DEVELOPMENT = True`. I had this in my configuration in config vars in Heroku.
+
+- Images in index.html where side by side in mobile. Used bootstrap classes to have images go below one another for a better UX.
+  
+- Using Lighthouse report to 
 
 ## Deployment
 To deploy my django application, I used [Code Institute Full Template](https://github.com/Code-Institute-Org/gitpod-full-template)
@@ -275,17 +286,35 @@ The following command in the Gitpod CLI will create the relevant files needed fo
 4. Select the region you are working in.
   
 #### Heroku 
-- In the resources tab you must install 'Heroku Postgres' in the add-ons section
-- You can set it to hobby for free use.
+- Heroku changed there policy for free database on their website. Below I have a section for ElephantSQL.
+- When it was free this is what you would do.
+    - In the resources tab you must install 'Heroku Postgres' in the add-ons section
+    - You can set it to hobby for free use.
 
 You will need to set your Environment Variables - this is a key step to ensuring your application is deployed properly.
 - In the Settings tab, click on `Reveal Config Vars` and set the following variables:
     - Add key: `PORT` & value `8000`
     - SECRET_KEY - to be set to your chosen key
     - CLOUDINARY_URL - to be set to your cloudinary API environment varible
-    - DATABASE_URL - For Postgres database, which should be filled in when `Heroku Postgres` is selected from add-ons
+    - DATABASE_URL - Using ElephantSQL
     - DISABLE_COLLECTSTATIC, 1 - Untill its ready for release
- 
+
+#### ElephantSQl
+- For this project I used ElephantSQL for the database, as Heroku changed there policy for use of their free database.
+- Log in or create an account to [ElephantSQL.com]([ElephantSQL.com](https://www.elephantsql.com/)) to access your dashboard.
+- Click `Create New Instance`. A green button on the right side of the page.
+- Set up your plan
+    - Give your plan a `Name` (this is commonly the name of the project)
+    - Select the `Tiny Turtle` (Free) plan
+    - You can leave the Tags field blank
+- Select a data center near you.
+    - For this I used `EU-west-1(Ireland` 
+- Then click `Review`
+- Check your details are correct and then click `Create instance`
+- Return to the ElephantSQL dashboard and click on the `database instance name` for your project
+- In the URL section, click the copy icon to copy the `database URL`
+- Copy to heroku `Reveal Config Vars`
+  
 #### Heroku Deployment
 
 In the Deploy tab:
@@ -300,13 +329,13 @@ In the Deploy tab:
 
 ## Credits
 
-https://startbootstrap.com/theme/agency helped with header
-https://docs.djangoproject.com/en/4.1/
-https://github.com/pennersr/django-allauth
-https://jqueryui.com/
-https://www.youtube.com/watch?v=TZL-WFzvDJg email
-
-Matt Rudge for his Django I think therefore I blog on [Code Institute](https://codeinstitute.net)
+- https://startbootstrap.com/theme/agency helped with header
+- https://docs.djangoproject.com/en/4.1/
+- https://github.com/pennersr/django-allauth
+- https://jqueryui.com/ For script
+- https://www.youtube.com/watch?v=TZL-WFzvDJg For google SMTP
+- Matt Rudge for his Django I think therefore I blog and resume project at [Code Institute](https://codeinstitute.net)
+- 
 
 
 
