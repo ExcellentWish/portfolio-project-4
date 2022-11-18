@@ -56,14 +56,25 @@ On the sign-in page the user is prompted to register if they do not have an acco
 
 Once a user logs in they are presented with a success message:
 
-![](signinmessage))
+![](assets/testing/sign-in-message.jpg)
 
  If they are logged in then this changes, pages that require authentication show instead, these are `Manage Reservations`, `Update Details` & `Logout`.
+![](assets/testing/whenLoggedIn.jpg)
+
+Logged in users have the benefit of forms pre-populating with their information:
 
 ## Epic 4 - Menus can be viewed
 ### User Stories
 1. [Food and drinks menus displayed seperately](https://github.com/ExcellentWish/portfolio-project-4/issues/11): As a user I can view the food & drinks menu's separately so that I can easily find the information I'm looking for.
 2. [All items on the menu have a price, description and dietary info](https://github.com/ExcellentWish/portfolio-project-4/issues/12): As a user I can easily find all of the relevant information about the menu items so that I can make informed decisions.
+
+In the navbar, there is a `Menus` link which has a dropdown to display the two menu options, `Food` & `Drinks`.
+
+On the `Menus` page there are links to both the Food and Drinks menu pages
+
+On each of the menu pages, each menu section is separated by a `<hr>` and has a clear heading to highlight these separate sections, making it easier for the user to find what they're looking for.
+
+For each item, there is a name, description, dietary label, allergens list & price.
 
 ## Epic 5 - Reservations Functionality
 ### User Stories
@@ -71,6 +82,13 @@ Once a user logs in they are presented with a success message:
 2.  [Reservation is rejected if restaurant is fully booked](https://github.com/ExcellentWish/portfolio-project-4/issues/14): As an admin user I can prevent guests from submitting reservation requests for full slots so that I can efficiently manage customer expectations and prevent a backlog of bookings.
 3.  [Reservations can be edited by the user on the front end](https://github.com/ExcellentWish/portfolio-project-4/issues/15): As a logged-in customer I can edit/delete an existing enquiry so that I can make changes if required online.
 4.  [Users can edit their information](https://github.com/ExcellentWish/portfolio-project-4/issues/16): As a user I can edit my customer information so that I can make sure my details are up to date for any future communication with the restaurant.
+
+From the reservations page, any user (authenticated or not) can add their details, requested time & date and submit the form, if there is availability they will get a positive message.
+
+If there is no availability then they will not be able to submit their request and they will get a message to explain this:
+![](assets/images/Full-Booking.PNG)
+
+An authenticated user is able to manage any existing reservations from the Manage Reservations page, if they have any they are displayed like this:
 
 ## JavaScript Tests
 
@@ -89,6 +107,11 @@ I have used this function when a window resizes in conjunction with a `debounce`
 However screenSize is called whenever the document is loaded to prevent the map showing when a user navigates through the site.
 
 **`datePicker`** - I opted to use a JQuery datepicker for my project and so this function applies the datepicker to any fields with the id - `"#id_requested_date"`.
+![](assets/testing/date-picker.jpg)
+
+**`checkDate`** - This function validates dates being submitted as part of the reservation form, if a date in the past is selected the user is alerted and the form does not submit:
+
+![](assets/testing/date-in-past.jpg)
 
 **`formError`** - This function animates the form by adding an Animate class to the form if there is an error. You can see before submitting the only class on the ul is `full-form`:
 
@@ -99,3 +122,4 @@ And after submitting, with an error the class `"animate__animated animate__shake
 This did cause issues when submitting the form as the email field wasn't able to be read so I have used **`removeDisableAttrOnSubmit`** to remove the disabled attribute and then submit the form. 
 
 **`deleteModal`** - This function opens the confirmation modal when a user is trying to cancel.
+![](assets/testing/delete-modal.jpg)

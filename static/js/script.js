@@ -25,7 +25,7 @@ $(document).ready(function () {
     // If there is a form error, shake the form 
     function formError() {
         if ($(".alert.alert-danger").length) {
-            $("#full-form").addClass("animate__animated animate__shakeX");
+            $(".full-form").addClass("animate__animated animate__shakeX");
         }
     }
 
