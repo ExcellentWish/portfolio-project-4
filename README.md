@@ -269,8 +269,16 @@ To generate your own coverage report from the command line:
 
 - Images in index.html where side by side in mobile. Used bootstrap classes to have images go below one another for a better UX.
   
-- Using Lighthouse report to 
+- Using Lighthouse reports
+  ![](assets/testing/lighthouse_report.PNG)
+- Using lighthouse reports I resized my images to increase my score.
+  ![](assets/testing/lighthouse_report_better.PNG)
 
+Although Desktops were an easy fix, mobile was not.
+- It went form this
+ ![](assets/testing/mobile_lighthouse.PNG)
+- To this
+  ![](assets/testing/mobile_lighthouse_bad.PNG
 ## Deployment
 To deploy my django application, I used [Code Institute Full Template](https://github.com/Code-Institute-Org/gitpod-full-template)
 - Click the `Use This Template` button.
