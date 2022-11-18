@@ -301,7 +301,7 @@ You will need to set your Environment Variables - this is a key step to ensuring
 
 #### ElephantSQl
 - For this project I used ElephantSQL for the database, as Heroku changed there policy for use of their free database.
-- Log in or create an account to [ElephantSQL.com]([ElephantSQL.com](https://www.elephantsql.com/)) to access your dashboard.
+- Log in or create an account with [ElephantSQL.com]([ElephantSQL.com](https://www.elephantsql.com/)) to access your dashboard.
 - Click `Create New Instance`. A green button on the right side of the page.
 - Set up your plan
     - Give your plan a `Name` (this is commonly the name of the project)
@@ -330,12 +330,12 @@ In the Deploy tab:
 ## Credits
 
 - https://startbootstrap.com/theme/agency helped with header
-- https://docs.djangoproject.com/en/4.1/
-- https://github.com/pennersr/django-allauth
-- https://jqueryui.com/ For script
+- https://docs.djangoproject.com/en/4.1/ For help with using Django
+- https://github.com/pennersr/django-allauth For user functions on the website
+- https://jqueryui.com/ For script.js throughout the project
 - https://www.youtube.com/watch?v=TZL-WFzvDJg For google SMTP
 - Matt Rudge for his Django I think therefore I blog and resume project at [Code Institute](https://codeinstitute.net)
-- 
+- https://colorlib.com/ for my 500 and 404 pages
 
 
 

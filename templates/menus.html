@@ -22,14 +22,14 @@
     <div class="row content mb-5 d-flex justify-content-center">
         <div class="col-sm-6 col-lg-4 col-xl-3 text-center">
             <a href="{% url 'food_menu' %}">
-                <img src="https://res.cloudinary.com/dqw7grg7l/image/upload/v1664441120/pp4dessert_x1h4m0.jpg" class="img-thumbnail"
+                <img src="{% static 'images/food-menu.jpg' %}" class="img-thumbnail"
                     alt="Picture of the dish taste of heaven.">
                 <h3 class="mt-2 brand-text page-links">Food</h3>
             </a>
         </div>
         <div class="col-sm-6 col-lg-4 col-xl-3 text-center">
             <a href="{% url 'drinks_menu' %}">
-                <img src="https://res.cloudinary.com/dqw7grg7l/image/upload/v1664441119/pp4drinks_ndhadu.jpg" class="img-thumbnail" alt="Photo of wine bottles">
+                <img src="{% static 'images/drink-menu.jpg' %}" class="img-thumbnail" alt="Photo of wine bottles">
                 <h3 class="mt-2 brand-text page-links">Drinks</h3>
             </a>
         </div>
