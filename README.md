@@ -244,6 +244,29 @@ All of my code has been validated using an online validator for specific languag
   ![](assets/testing/Javascript_errors_pp4.jpg)
   ![](assets/testing/JShint-fix.jpg)
     - Some variables not showing as I used Jquery.
+  
+- With PEP8Online.com down I used Pycodestyle.
+
+ -  [Pycodestyle](https://pypi.org/project/pycodestyle/) 
+ -  To use PEP8 Standard in my code.
+ -  For my reservation views
+ -  ![](assets/testing/reservations-view-errors.jpg)
+ -  To this:
+ -  ![](assets/testing/reservations_views_pycodestylefix.PNG)
+  
+  I had PEP8 problems in my modal
+  - ![](assets/testing/R_modal_error.PNG)
+  - And fixed it to this:
+  - ![](assets/testing/R_modal_fix.PNG)
+  
+  Also in reservation URLs
+  - ![](assets/testing/reservation_urls_errors.PNG)
+  - And fixed
+  -  ![](assets/testing/reservation_urls_fix.PNG)
+
+The problem I have is with setting.py but after speaking with my mentor and he explained it was legacy code and that old terminals only had the 79 characters long view, he put my mind at ease.
+If its good for Django its good for me.
+- ![](assets/testing/setting-problem.PNG)
 ### Manual Testing
 
 I have tested this project manually myself and have also had it peer-reviewed & tested by friends and family on multiple devices and screen sizes.
@@ -266,6 +289,10 @@ To generate your own coverage report from the command line:
 - At various stages of my testing, upon submitting the contact form some users received a 500 error, this was due to Gmail preventing my application from logging in. I would receive an email to alert me of this login attempt and so I have had to enable these permissions a handful of times in order for it to work.
   
 - Issue with database in bottega_pia Settings.py. When deploying to Heroku I would get 500 errors. I believe this was due to `DEVELOPMENT = True`. I had this in my configuration in config vars in Heroku.
+![](assets/images/Db-issue.PNG)
+
+My fix was to comment out my code for `Development`
+![](assets/images/db-fix.PNG)
 
 - Images in index.html where side by side in mobile. Used bootstrap classes to have images go below one another for a better UX.
   
@@ -279,6 +306,12 @@ Although Desktops were an easy fix, mobile was not.
  ![](assets/testing/mobile_lighthouse.PNG)
 - To this
   ![](assets/testing/mobile_lighthouse_bad.PNG
+
+With more image resizing I did increase its score.
+-[](assets/images/lighthouse_report_better_mobile.PNG)
+
+
+
 ## Deployment
 To deploy my django application, I used [Code Institute Full Template](https://github.com/Code-Institute-Org/gitpod-full-template)
 - Click the `Use This Template` button.

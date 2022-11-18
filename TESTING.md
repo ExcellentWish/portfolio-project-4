@@ -34,6 +34,11 @@ Using a specified login the site owner can access the admin backend
 
 Once in this admin backend, the admin user is able to access the food and drinks item model, add new items or edit/delete existing one and toggle with 'on menu' which will change which items are displayed on the 'live' menu pages respectively.
 
+![](assets/testing/drink-menu-admin.PNG)
+![](assets/testing/single-drink-admin.PNG)
+![](assets/testing/food-menu-admin.PNG)
+![](assets/testing/single-food-admin.PNG)
+
 
 ## Epic 3 - User Authentication
 ### User Stories
@@ -43,6 +48,17 @@ Once in this admin backend, the admin user is able to access the food and drinks
 4. [Forms pre-populated for users](https://github.com/ExcellentWish/portfolio-project-4/issues/10): As a user I can log in so that I can auto-populate forms with my information on the site.
 
 The navbar displays different nav links depending on the status of the user. If they aren't logged in already the options are `Register` or `Login`.
+![](assets/testing/notloggedin.PNG)
+
+On the sign-in page the user is prompted to register if they do not have an account:
+
+![](assets/images/testing/sign-in.PNG)
+
+Once a user logs in they are presented with a success message:
+
+![](signinmessage))
+
+ If they are logged in then this changes, pages that require authentication show instead, these are `Manage Reservations`, `Update Details` & `Logout`.
 
 ## Epic 4 - Menus can be viewed
 ### User Stories
@@ -56,6 +72,7 @@ The navbar displays different nav links depending on the status of the user. If 
 3.  [Reservations can be edited by the user on the front end](https://github.com/ExcellentWish/portfolio-project-4/issues/15): As a logged-in customer I can edit/delete an existing enquiry so that I can make changes if required online.
 4.  [Users can edit their information](https://github.com/ExcellentWish/portfolio-project-4/issues/16): As a user I can edit my customer information so that I can make sure my details are up to date for any future communication with the restaurant.
 
+## JavaScript Tests
 
 I have written a small number of JS functions that handle some animation & event listeners to add classes and attributes to elements created dynamically.
 
@@ -70,3 +87,15 @@ And any larger than that it appears:
 I have used this function when a window resizes in conjunction with a `debounce` function to prevent the function triggering if being called continuously. It triggers after it has stopped being called for 150 milliseconds. As explained [here](https://davidwalsh.name/javascript-debounce-function).
 
 However screenSize is called whenever the document is loaded to prevent the map showing when a user navigates through the site.
+
+**`datePicker`** - I opted to use a JQuery datepicker for my project and so this function applies the datepicker to any fields with the id - `"#id_requested_date"`.
+
+**`formError`** - This function animates the form by adding an Animate class to the form if there is an error. You can see before submitting the only class on the ul is `full-form`:
+
+And after submitting, with an error the class `"animate__animated animate__shakeX"` is added:
+
+**`disableEmail`** - This function has been used to disable the email on the 'Update Details' page as I don't want the user to update it on this page:
+
+This did cause issues when submitting the form as the email field wasn't able to be read so I have used **`removeDisableAttrOnSubmit`** to remove the disabled attribute and then submit the form. 
+
+**`deleteModal`** - This function opens the confirmation modal when a user is trying to cancel.
