@@ -24,6 +24,9 @@ This is a full-stack frameworks project built using Django, Python, HTML, CSS an
       - [Contact Form](#contact-form)
   - [Technology Used](#technology-used)
   - [Testing](#testing)
+    - [Code Validation](#code-validation)
+    - [Manual Testing](#manual-testing)
+    - [Automated Testing](#automated-testing)
   - [Deployment](#deployment)
     - [Creating an Application with Heroku](#creating-an-application-with-heroku)
       - [Heroku](#heroku)
@@ -221,8 +224,42 @@ I have used several technologies that have enabled this design to work:
     - Used to generate responsive image used in README file.
 
 ## Testing
-Testing  is found [here](https://docs.google.com/spreadsheets/d/15nLGvvOe-gkxcLGmvUc7a_84_5jA6UGyUBGgMEQ42Fg/edit#gid=0)
+I have used a combination of manual and automated testing to ensure the website's functionality meets the desired intent.
+
+### Code Validation
+All of my code has been validated using an online validator for specific languages, and pycodestyle for python as PEP8online.com was down.
+
+- [W3C Markup Validation Service](https://validator.w3.org/) 
+    - Used to validate all HTML code written and used in this webpage.
+  
+- [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/#validate_by_input)
+    - Used to validate all CSS code written and used in this webpage.
+![](assets/testing/Css_validation.PNG)
+
+- [JSHint](https://jshint.com/)
+    - Used to validate JS code
+  ![](assets/testing/Javascript_errors_pp4.jpg)
+  ![](assets/testing/JShint-fix.jpg)
+
+### Manual Testing
+
+I have tested this project manually myself and have also had it peer-reviewed & tested by friends and family on multiple devices and screen sizes.
 Testing document is found [here](TESTING.md)
+
+### Automated Testing
+
+I have used the Coverage library throughout testing to keep track of how much of my Python code was covered by the tests I had written. From running the coverage report my website has 66% of my code tested. The remaining code is covered by manual testing.
+
+![](assets/testing/Coveragereport.PNG)
+
+To generate your own coverage report from the command line:
+
+1. Install the package using `pip3 install coverage`
+2. Run `coverage run manage.py test`
+3. Then `coverage html` to generate the report
+4. You can view the report in a browser by using the command `python3 -m http.server` and opening the `index.html` file from inside the `htmlcov` folder.
+
+
 ## Deployment
 To deploy my django application, I used [Code Institute Full Template](https://github.com/Code-Institute-Org/gitpod-full-template)
 - Click the `Use This Template` button.
