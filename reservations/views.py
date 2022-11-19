@@ -171,14 +171,14 @@ class ManageReservations(View):
     def get(self, request, User=User, *args, **kwargs):
         if request.user.is_authenticated:
             customer = get_customer_instance(request, User)
-            model = Reservation
             current_reservations = retrieve_reservations(self, request, User)
-            # If the user has no reservations
+
+            # If the user has no reservations or does not exist as a 'customer'
             if current_reservations is None:
                 messages.add_message(
                     request, messages.WARNING,
-                    "Ooops, you've not got any existing reservations. "
-                    "You can make reservations here.")
+                    "Ooops, you've not got any existing "
+                    "reservations. You can make reservations here.")
                 url = reverse('reservations')
                 return HttpResponseRedirect(url)
 
@@ -189,63 +189,70 @@ class ManageReservations(View):
                     {'reservations': current_reservations,
                      'customer': customer})
 
-        else:
-            # Prevent users not logged in from accessing this page
-            messages.add_message(
-                request, messages.ERROR,
-                "You must be logged in to manage your reservations.")
-            url = reverse('reservations')
-            return HttpResponseRedirect(url)
-
 
 class EditReservation(View):
     # View for user to be able to edit their existing reservations
     def get(self, request, reservation_id, User=User, *args, **kwargs):
-        # Get reservation object based on id
-        reservation = get_object_or_404(
-            Reservation, reservation_id=reservation_id)
-        today = datetime.datetime.now().date()
-        if reservation.requested_date < today:
-            messages.add_message(
-                request, messages.ERROR,
-                "You are trying to edit a reservation that is in the past.")
-            url = reverse('manage_reservations')
-            return HttpResponseRedirect(url)
+        if request.user.is_authenticated:
+            # Get reservation object based on id
+            reservation = get_object_or_404(
+                Reservation, reservation_id=reservation_id)
+            # Prevent customers editing expired reservations
+            today = datetime.datetime.now().date()
+            if reservation.requested_date < today:
+                messages.add_message(
+                    request, messages.ERROR, "You are trying to edit a "
+                    "reservation that is in the past.")
+                url = reverse('manage_reservations')
+                return HttpResponseRedirect(url)
+            # Prevent customers editing rejected reservations
+            elif reservation.status == 'rejected':
+                messages.add_message(
+                    request, messages.ERROR, "You are trying to edit a "
+                    "reservation that has been rejected.")
+                url = reverse('manage_reservations')
+                return HttpResponseRedirect(url)
+            else:
+                # Convert date to display in dd/mm/YYYY format
+                date_to_string = reservation.requested_date.strftime(
+                    "%d/%m/%Y")
+                reservation.requested_date = date_to_string
 
-        elif reservation.status == 'rejected':
-            messages.add_message(
-                request, messages.ERROR,
-                "You are trying to edit a reservation that has been rejected.")
-            url = reverse('manage_reservations')
-            return HttpResponseRedirect(url)
+                # Get customer info
+                customer = get_customer_instance(request, User)
 
-        customer = get_customer_instance(request, User)
-        logger.warning(reservation)
-        logger.warning(customer)
-        name1 = reservation.customer
-        name2 = customer
-        logger.warning(name1)
-        logger.warning(name2)
+                # Compare names of reservation owner and user
+                reservation_owner = reservation.customer
+                name_of_user = customer
 
-        if name1 != name2:
-            messages.add_message(
-                request, messages.ERROR,
-                "You are trying to edit a reservation that is not yours.")
-            url = reverse('manage_reservations')
-            return HttpResponseRedirect(url)
+                if reservation_owner != name_of_user:
+                    # If the names do not match redirect to manage reservations
+                    messages.add_message(
+                        request, messages.ERROR, "You are trying to edit a "
+                        "reservation that is not yours.")
+                    url = reverse('manage_reservations')
+                    return HttpResponseRedirect(url)
+
+                else:
+                    # return both forms with the existing information
+                    customer_form = CustomerForm(instance=customer)
+                    reservation_form = ReservationForm(instance=reservation)
+
+                    return render(request, 'edit_reservation.html',
+                                  {'customer_form': customer_form,
+                                   'customer': customer,
+                                   'reservation_form': reservation_form,
+                                   'reservation': reservation,
+                                   'reservation_id': reservation_id})
 
         else:
-            # return both forms with the existing information
-            customer_form = CustomerForm(instance=customer)
-            reservation_form = ReservationForm(instance=reservation)
+            # Prevent users not logged in from accessing this page
+            messages.add_message(
+                request, messages.ERROR, "You must be logged in to "
+                "manage your reservations.")
 
-            return render(
-                request, 'edit_reservation.html',
-                {'customer_form': customer_form,
-                 'customer': customer,
-                 'reservation_form': reservation_form,
-                 'reservation': reservation,
-                 'reservation_id': reservation_id})
+            url = reverse('reservations')
+            return HttpResponseRedirect(url)
 
     def post(self, request, reservation_id, User=User, *args, **kwargs):
         customer = get_customer_instance(request, User)
@@ -413,9 +420,8 @@ class EditCustomerDetails(View):
                 if customer_form.has_changed():
                     # get the information from the form
                     customer_full_name = request.POST.get('full_name')
+                    customer_email = request.POST.get('email')
                     customer_phone_number = request.POST.get('phone_number')
-
-                    customer_form.save(commit=False)
                     # Update customer instance with new information
                     customer.full_name = customer_full_name
                     customer.phone_number = customer_phone_number
