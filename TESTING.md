@@ -62,6 +62,9 @@ Once a user logs in they are presented with a success message:
 ![](assets/testing/whenLoggedIn.jpg)
 
 Logged in users have the benefit of forms pre-populating with their information:
+![](assets/testing/pre-populated.PNG)
+![](assets/testing/update-detail-form.png)
+New users will only have their email populated as they will not yet be present in the Customer model.
 
 ## Epic 4 - Menus can be viewed
 ### User Stories
@@ -69,12 +72,15 @@ Logged in users have the benefit of forms pre-populating with their information:
 2. [All items on the menu have a price, description and dietary info](https://github.com/ExcellentWish/portfolio-project-4/issues/12): As a user I can easily find all of the relevant information about the menu items so that I can make informed decisions.
 
 In the navbar, there is a `Menus` link which has a dropdown to display the two menu options, `Food` & `Drinks`.
+![](assets/images/nav-menus.png)
 
 On the `Menus` page there are links to both the Food and Drinks menu pages
+![](assets/images/menuPage.jpg)
 
 On each of the menu pages, each menu section is separated by a `<hr>` and has a clear heading to highlight these separate sections, making it easier for the user to find what they're looking for.
-
 For each item, there is a name, description, dietary label, allergens list & price.
+![](assets/images/foodMenu.jpg)
+![](assets/testing/drink-menu-hr.png)
 
 ## Epic 5 - Reservations Functionality
 ### User Stories
@@ -85,11 +91,21 @@ For each item, there is a name, description, dietary label, allergens list & pri
 
 From the reservations page, any user (authenticated or not) can add their details, requested time & date and submit the form, if there is availability they will get a positive message.
 
+![](assets/testing/reservation-message.png)
+
 If there is no availability then they will not be able to submit their request and they will get a message to explain this:
 ![](assets/images/Full-Booking.PNG)
 
 An authenticated user is able to manage any existing reservations from the Manage Reservations page, if they have any they are displayed like this:
+![](assets/testing/reservation-stages.png)
 
+From this panel they are able to edit & their reservations:
+![](assets/images/edit-reservations.PNG)
+![](assets/images/update-editReservation.PNG)
+
+And users can also cancel them as well:
+![](assets/testing/delete-reservation.png)
+![](assets/testing/delete-modal.jpg)
 ## JavaScript Tests
 
 I have written a small number of JS functions that handle some animation & event listeners to add classes and attributes to elements created dynamically.
@@ -120,8 +136,10 @@ And after submitting, with an error the class `"animate__animated animate__shake
 ![](assets/testing/JS-animate-shake.png)
 
 **`disableEmail`** - This function has been used to disable the email on the 'Update Details' page as I don't want the user to update it on this page:
+![](assets/testing/update-detail-form.png)
 
 This did cause issues when submitting the form as the email field wasn't able to be read so I have used **`removeDisableAttrOnSubmit`** to remove the disabled attribute and then submit the form. 
+![](assets/testing/update-detail-success.PNG)
 
 **`deleteModal`** - This function opens the confirmation modal when a user is trying to cancel.
 ![](assets/testing/delete-modal.jpg)

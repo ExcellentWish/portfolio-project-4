@@ -332,7 +332,7 @@ class DeleteReservation(View):
             if reservation.requested_date < today:
                 reservation.delete()
                 messages.add_message(
-                    request, messages.ERROR, "You are have deleted a "
+                    request, messages.ERROR, "You have deleted a "
                     "reservation that is in the past.")
                 url = reverse('manage_reservations')
                 return HttpResponseRedirect(url)

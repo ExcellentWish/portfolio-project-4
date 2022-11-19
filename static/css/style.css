@@ -86,6 +86,11 @@ body {
 
 /* Reservations page */
 
+#reservation-list{
+    list-style: none;
+    padding-left: 0;
+}
+
 .full-form {
   list-style: none;
 }
@@ -123,6 +128,29 @@ li select,
   line-height: 1.5;
   border-radius: 0.25rem;
   transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+.submit-button {
+  color: white;
+  background-color: #007842;
+  text-transform: capitalize;
+}
+.submit-button:hover{
+  color: black;
+  text-shadow: 2px 2px 4px #007842;
+  background-color: #358d84cb;
+}
+
+
+.cancel-button:hover {
+  color: black;
+  text-shadow: 2px 2px 4px #9D0208;
+  background-color: #f8d7da;
+}
+
+.cancel-button {
+  color: white;
+  background-color: #e8575d;
+  text-transform: capitalize;
 }
 
 /**Crispy forms**/

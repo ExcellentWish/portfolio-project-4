@@ -126,6 +126,7 @@ Initially, the colour pallete I have chosen for this website are from [coolers.c
 I like it because it has the Italian flag colours in it. I wanted a 'clean' feel and based it on greens to keep in theme with Italy. Italy will have a huge role in the design of the restaurant and the menu so I wanted there to be consistency.
 
 However during the development decided to go with a darker green for better contrast throughout the page.
+
 ![](assets/images/greenchange.jpg)
 
 
@@ -177,6 +178,7 @@ If the user is not logged in at all then the form appears blank, as the form req
 ![](assets/images/no-bookin.jpg)
 
 **Manage Reservations**:
+hile testing I realised that my manage reservation pages where dull as I forgot to add styling to them.
 
 #### Contact Form
 - **Contact form**:
@@ -267,6 +269,7 @@ All of my code has been validated using an online validator for specific languag
 The problem I have is with setting.py but after speaking with my mentor and he explained it was legacy code and that old terminals only had the 79 characters long view, he put my mind at ease.
 If its good for Django its good for me.
 - ![](assets/testing/setting-problem.PNG)
+
 ### Manual Testing
 
 I have tested this project manually myself and have also had it peer-reviewed & tested by friends and family on multiple devices and screen sizes.
