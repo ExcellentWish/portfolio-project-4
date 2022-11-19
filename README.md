@@ -177,12 +177,52 @@ If the user is not logged in at all then the form appears blank, as the form req
 
 ![](assets/images/no-bookin.jpg)
 
-**Manage Reservations**:
-hile testing I realised that my manage reservation pages where dull as I forgot to add styling to them.
+**Manage Reservations**:Logged in users are able to view the 'manage reservations' page, on this page they are shown any reservation enquiries they have previously made using the email address associated with their user account.
+
+The reservation ID is displayed at the top of the reservation item so they can be easily identified, the reservation status is also given a coloured background, depending on what the status is, to give the user a visual representation of this status.
+
+There are also edit & delete buttons, users are able to edit or delete existing reservations they have that are either 'confirmed' or 'pending'.
+
+![](assets/images/MangeReservations.PNG)
+
+This image was taken while testing. I realised that my manage reservation pages where dull as I forgot to add styling to them.
+
+![](assets/images/MangeReservations-afterstyle.PNG)
+
+I decided that reservations with a date in the past would display with a status of 'expired' and would not be able to be edited as this could cause confusion for the user and also the admin user. They are able to be deleted, as for a user would not like having expired reservation left there page.
+
+Defensive programme has been used to prevent users editing/deleting reservations that they aren't meant to, if a user tried (by adding the reservation ID in the URL) they would be redirected back to manage reservations.
+
+![](assets/images/edit-past-reservation.jpg)
+
+![](assets/images/rejected-edit.jpg)
+
+**Edit Reservation**: This page simply displays the reservation form pre-populated using the reservation instance, the user is able to change the date, time or number of guests and resubmit the form. After resubmitting the user is redirected back to the 'Manage Reservations' page and a success message is displayed showing which reservation was edited. 
+
+![](assets/images/update-editReservation.PNG)
+
+**Delete Reservations**: This page simply displays the reservation selected with all of its information, the user presses 'Cancel Reservation' and a modal pop's up for the user to confirm the cancellation, explaining that this cannot be undone. If the user chooses 'Yes delete' the reservation will be deleted from the model. After confirming the user is redirected back to the 'Manage Reservations' page and a success message is displayed showing which reservation was edited. 
+
+![](assets/testing/delete-modal.jpg)
+
+![](assets/images/../testing/delete-reservation.png)
+
+**Update customer details**: A logged-in user can also update their phone number or full name that is stored in the customer model, this can be done from the 'Update Details' link in the navbar. This page simply displays the customer form but has the email address blanked out - this is because the email is associated with the user account and so I want the user to change their email for their account.
+
+There are explanation statements on this page regarding the email address as the user is only able to view reservations made under the users 'primary' email. I added this statement so that users were not surprised if they weren't able to view reservations made under an old email address. 
+
+![](assets/testing/update-detail-form.png)
+
+If a user wants to update their email address they can navigate using the link found on 'Update Details'. They are taken to `accounts/email` and from here they can manage the emails associated with their user account. They can also switch their 'Primary' email to view reservations associated with their other email.
+
+![](assets/images/update-email.jpg)
 
 #### Contact Form
-- **Contact form**:
-    ![](assets/testing/ContactUs.PNG)
+- **Contact form**:All users are able to submit a contact form from the 'Contact Us' page, this sends an email to the website owner using Google SMTP. Having a way to communicate with the website owner/restaurant manager is a helpful tool for the user and creates a platform for communication to strengthen the relationships with customers.
+
+This form also pre-populates with the customer's information if they're logged in.
+
+![](assets/testing/ContactUs.PNG)
 
 
 ## Technology Used
@@ -224,6 +264,8 @@ I have used several technologies that have enabled this design to work:
     - Used to accurately format my HTML code.
 - [AmIResponsive](http://ami.responsivedesign.is/)
     - Used to generate responsive image used in README file.
+- [Image Resizer](https://imageresizer.com/)
+    - Used to help improve Lighthouse score.
 
 ## Testing
 I have used a combination of manual and automated testing to ensure the website's functionality meets the desired intent.
@@ -380,6 +422,7 @@ In the Deploy tab:
 - https://github.com/pennersr/django-allauth For user functions on the website
 - https://jqueryui.com/ For script.js throughout the project
 - https://www.youtube.com/watch?v=TZL-WFzvDJg For google SMTP
+- https://www.youtube.com/watch?v=llbtoQTt4qw from Kasia Bogucka that help with this project and help me understand Django alot.
 - Matt Rudge for his Django I think therefore I blog and resume project at [Code Institute](https://codeinstitute.net)
 - https://colorlib.com/ for my 500 and 404 pages
 
@@ -387,4 +430,4 @@ In the Deploy tab:
 
 ## Acknowledgements
 
-I would like to thank my course mentor Ronan McClelland for his support and guidance throughout the course of the project and Kasia Bogucka and my peers from Msletb slack group for their support & feedback.
+I would like to thank my course mentor Ronan McClelland for his support and guidance throughout the course of the project and Kasia Bogucka and my peers from Msletb slack group for their support & feedback. Code Institute Slack channels for a massive resources of information and help.

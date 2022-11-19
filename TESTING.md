@@ -116,6 +116,8 @@ From this panel they are able to edit & their reservations:
 
 ![](assets/images/edit-reservations.PNG)
 
+While testing I realised that my manage reservation pages where dull as I forgot to add styling to them.
+
 ![](assets/images/update-editReservation.PNG)
 
 And users can also cancel them as well:
