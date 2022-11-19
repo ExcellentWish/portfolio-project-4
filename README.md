@@ -185,7 +185,7 @@ There are also edit & delete buttons, users are able to edit or delete existing 
 
 ![](assets/images/MangeReservations.PNG)
 
-This image was taken while testing. I realised that my manage reservation pages where dull as I forgot to add styling to them.
+This image above was taken while testing. I realised that my manage reservation pages where dull as I forgot to add styling to them.
 
 ![](assets/images/MangeReservations-afterstyle.PNG)
 
