@@ -1,5 +1,4 @@
 $(document).ready(function () {
-    console.log('Working');
     $("#id_requested_date").datepicker({
         dateFormat: 'dd/mm/yy'
     });
@@ -41,7 +40,7 @@ $(document).ready(function () {
         $("#customer-details-form").one('submit', (function (e) {
             e.preventDefault();
             var $this = $(this);
-            $("#customer-details-form>.full-form>#div_id_email>.emailinput").attr("disabled", false);
+            $("#customer-details-form>#div_id_email>.controls>.emailinput").attr("disabled", false);
             $this.submit();
         }));
     }
@@ -111,6 +110,5 @@ $(document).ready(function () {
         });
     }
     
-    window.initMap = initMap;
     initMap();
 });
