@@ -439,7 +439,7 @@ class EditCustomerDetails(View):
             messages.add_message(
                 request, messages.ERROR,
                 "Something is not right with your form "
-                "please make sure your email address & phone number "
+                "please make sure your Name & phone number "
                 "are entered in the correct format.")
 
         return render(request, 'edit_customer_details.html',
