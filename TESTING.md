@@ -124,6 +124,18 @@ And users can also cancel them as well:
 
 ![](assets/testing/delete-modal.jpg)
 
+Users not logged in that try to access these pages are displayed with this message:
+
+![](assets/testing/loggin-manage-reservation.png)
+
+A logged-in user is able to access the 'Update Details' page where they are displayed with a form pre-filled with their information, here they can update their full name and phone number and are guided to the aullauth emails page if they want to change their email.
+
+![](assets/testing/update-detail-form.png)
+
+Users not logged in that try to access this page are redirected and are shown this message:
+
+![](assets/testing/login-update-details.png)
+
 ## JavaScript Tests
 
 I have written a small number of JS functions that handle some animation & event listeners to add classes and attributes to elements created dynamically.
