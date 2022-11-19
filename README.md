@@ -294,6 +294,8 @@ To generate your own coverage report from the command line:
 My fix was to comment out my code for `Development`
 ![](assets/images/db-fix.PNG)
 
+After further review, it was due to the changing of databases, where I had similar usernames but different passwords
+
 - Images in index.html where side by side in mobile. Used bootstrap classes to have images go below one another for a better UX.
   
 - Using Lighthouse reports

@@ -114,8 +114,10 @@ However screenSize is called whenever the document is loaded to prevent the map 
 ![](assets/testing/date-in-past.jpg)
 
 **`formError`** - This function animates the form by adding an Animate class to the form if there is an error. You can see before submitting the only class on the ul is `full-form`:
+![](assets/testing/js-before-animate.png)
 
 And after submitting, with an error the class `"animate__animated animate__shakeX"` is added:
+![](assets/testing/JS-animate-shake.png)
 
 **`disableEmail`** - This function has been used to disable the email on the 'Update Details' page as I don't want the user to update it on this page:
 
